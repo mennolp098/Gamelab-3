@@ -112,20 +112,6 @@ public class MoveableNetworkEntity : MonoBehaviour {
 		_speed = _normalSpeed;
 		_networkView.RPC("ChangeSpeed", RPCMode.Others,_speed);
 	}
-	void OnCollisionStay2D(Collision2D other)
-	{
-		if(other.transform.tag == Tags.Surface)
-		{
-			_isGrounded = true;
-		}
-	}
-	void OnCollisionExit2D(Collision2D other)
-	{
-		if(other.transform.tag == Tags.Surface)
-		{
-			_isGrounded = false;
-		}
-	}
 	public Vector3 syncStartPosition
 	{
 		get{

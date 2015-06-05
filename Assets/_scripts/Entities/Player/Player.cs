@@ -6,6 +6,7 @@ public class Player : MonoBehaviour {
 	public string usernameText;
 	
 	protected NetworkView _networkView;
+	protected float _health;
 
 	private UserInfo _myUserInfo;
 	// Use this for initialization
@@ -27,5 +28,18 @@ public class Player : MonoBehaviour {
 	{
 		usernameText = username;
 		this.name = username;
+	}
+
+	public void BecomeZombie()
+	{
+		_networkView.RPC("NetworkBecomeZombie",RPCMode.All);
+	}
+	[RPC]
+	private void NetworkBecomeZombie()
+	{
+		//TODO: Change sprite;
+		//TODO: Add Zombie Collision;
+		//TODO: Change Health;
+		this.transform.tag = Tags.Zombie;
 	}
 }
