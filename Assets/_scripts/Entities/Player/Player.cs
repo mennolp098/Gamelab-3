@@ -3,10 +3,15 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
+
 	public string usernameText;
+
+	// Player stats
+	public float healthPoints;
+	public float walkSpeed;
+	public float runSpeed;
 	
 	protected NetworkView _networkView;
-	protected float _health;
 
 	private UserInfo _myUserInfo;
 	// Use this for initialization
@@ -23,23 +28,13 @@ public class Player : MonoBehaviour {
 			Debug.Log(_networkView.viewID);
 		}
 	}
+
+	// Network functions
+
 	[RPC]
 	private void ShowMyUsername(string username)
 	{
 		usernameText = username;
 		this.name = username;
-	}
-
-	public void BecomeZombie()
-	{
-		_networkView.RPC("NetworkBecomeZombie",RPCMode.All);
-	}
-	[RPC]
-	private void NetworkBecomeZombie()
-	{
-		//TODO: Change sprite;
-		//TODO: Add Zombie Collision;
-		//TODO: Change Health;
-		this.transform.tag = Tags.Zombie;
 	}
 }
