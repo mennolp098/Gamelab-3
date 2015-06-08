@@ -5,7 +5,7 @@ public class ZombieGame : GameMode {
 	public override void StartGameMode ()
 	{
 		base.StartGameMode ();
-		_allPlayers[Random.Range(0,_allPlayers.Count)].BecomeZombie();
+		_allPlayers[Random.Range(0,_allPlayers.Count)].GetComponent<Survivor>().BecomeZombie();
 	}
 	protected override void EndTimer ()
 	{

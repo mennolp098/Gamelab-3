@@ -6,6 +6,9 @@ public class Survivor : PlayerType {
 	protected override void ChangePlayerStats (){
 		base.ChangePlayerStats ();
 
+		//TODO GetComponent<SpriteRenderer> ().sprite = Resources.Load (PlayerSprite); <---- voor de correcte sprite.
+		//TODO GetComponent<Collider2D> ().bounds.size = new Vector3 (2, 4, 1); <---- voor de correcte box collision.
+
 		_player.healthPoints = 50; // not sure if 200 but at least you can see it must be changed here <3
 		_player.walkSpeed = 3;
 		_player.runSpeed = 4;
@@ -20,8 +23,9 @@ public class Survivor : PlayerType {
 	{
 		//TODO: Change sprite;
 		//TODO: Add Zombie Collision;
-		//TODO: Change Health;
-		//TODO  Add zombie component..
 		//this.transform.tag = Tags.Zombie;
+
+		gameObject.AddComponent<Zombie> ();
+		Destroy (this);
 	}
 }

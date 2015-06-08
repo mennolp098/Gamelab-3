@@ -42,7 +42,7 @@ public class GameMode : MonoBehaviour {
 		GameObject[] players = GameObject.FindGameObjectsWithTag(Tags.Player);
 		foreach(GameObject player in players)
 		{
-			_allPlayers.Add(player.GetComponent<Player>());
+			_allPlayers.Add(player);
 		}
 		_timer.GetComponent<Timer> ().StartTimer ();
 	}
