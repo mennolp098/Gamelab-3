@@ -11,7 +11,7 @@ public class Movement : MoveableNetworkEntity {
 	private float _regenSpeed;
 	private float _playerCondition;
 
-	public void SetMovementStats (float walkSpeed,float runSpeed, float condition,float maxStamina = 10, float regenSpeed = 0.1f, float _regenCooldown = 2.5f)
+	public void SetMovementStats (float walkSpeed,float runSpeed, float condition,float maxStamina = 10, float regenSpeed = 0.1f, float regenCooldown = 2.5f)
 	{
 		_walkSpeed = walkSpeed;
 		_runSpeed = runSpeed;
@@ -23,7 +23,7 @@ public class Movement : MoveableNetworkEntity {
 		_playerCondition = condition; // the higher the condition the longer he can run.
 
 		_regenSpeed = regenSpeed;
-		_regenCooldown = _regenCooldown;
+		_regenCooldown = regenCooldown;
 
 	}
 	protected override void MovementInput ()
