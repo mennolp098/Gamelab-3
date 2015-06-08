@@ -4,13 +4,15 @@ using System.Collections;
 public class Survivor : PlayerType {
 
 	protected override void ChangePlayerStats (){
-		//TODO GetComponent<SpriteRenderer> ().sprite = Resources.Load (PlayerSprite); <---- voor de correcte sprite.
-		//TODO GetComponent<Collider2D> ().bounds.size = new Vector3 (2, 4, 1); <---- voor de correcte box collision.
+		//gameObject.GetComponent<SpriteRenderer> ().sprite = Resources.Load("Sprites/PlayerArt/Survivor") as Sprite;// <---- voor de correcte sprite (oud idee).
+		//TODO De animator moet verandert worden als je in een zombie verandert niet de sprite van de animator..
+		//GetComponent<Collider2D> ().bounds.size = new Vector3 (2, 4, 1); <---- voor de correcte box collision.
 
+		_animator.runtimeAnimatorController = playerTypeAnimatorController;
 		_player.healthPoints = 50; // not sure if 200 but at least you can see it must be changed here <3
 		_player.walkSpeed = 3;
-		_player.runSpeed = 4;
-		_player.condition = 10;
+		_player.runSpeed = 5;
+		_player.condition = 1;
 		_player.maxStamina = 10;
 
 		base.ChangePlayerStats ();
@@ -27,7 +29,7 @@ public class Survivor : PlayerType {
 		//TODO: Add Zombie Collision;
 		//this.transform.tag = Tags.Zombie;
 
-		gameObject.AddComponent<Zombie> ();
+		gameObject.AddComponent<Zombie> (); //<-- check met de component niet met de tag. Tag is en blijft "Player" voor het systeem
 		Destroy (this);
 	}
 }
