@@ -6,24 +6,25 @@ public class Movement : MoveableNetworkEntity {
 	private float _walkSpeed;
 	private float _stamina;
 	private float _maxStamina;
-	private float _currentRegenCooldown;
+	private float _currentRegenCooldown = 0;
 	private float _regenCooldown;
 	private float _regenSpeed;
 	private float _playerCondition;
 
-	protected override void Start ()
+	public void SetMovementStats (float walkSpeed,float runSpeed, float condition,float maxStamina = 10, float regenSpeed = 0.1f, float _regenCooldown = 2.5f)
 	{
-		base.Start ();
-		_walkSpeed = 5;
-		_runSpeed = 10;
+		_walkSpeed = walkSpeed;
+		_runSpeed = runSpeed;
 		_speed = _walkSpeed;
-		_runSpeed = 10;
-		_maxStamina = 10;
-		_regenSpeed = 0.1f;
+
+		_maxStamina = maxStamina;
 		_stamina = _maxStamina;
-		_currentRegenCooldown = 0;
-		_regenCooldown = 2.5f;
-		_playerCondition = 0.1f;
+
+		_playerCondition = condition; // the higher the condition the longer he can run.
+
+		_regenSpeed = regenSpeed;
+		_regenCooldown = _regenCooldown;
+
 	}
 	protected override void MovementInput ()
 	{
@@ -53,7 +54,7 @@ public class Movement : MoveableNetworkEntity {
 		if(_stamina != 0)
 		{
 			_speed = _runSpeed;
-			_stamina -= _playerCondition;
+			_stamina -= 5 / _playerCondition;
 		}
 		else
 		{

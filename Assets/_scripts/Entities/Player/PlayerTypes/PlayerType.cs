@@ -6,15 +6,12 @@ public class PlayerType : MonoBehaviour {
 	protected Player _player;
 
 	// Use this for initialization
-	void Awake () {
+	protected virtual void Awake () {
 		_player = GetComponent<Player> ();
-	}
-
-	void Start(){
 		ChangePlayerStats ();
 	}
-	
-	protected virtual void ChangePlayerStats () {
 
+	protected virtual void ChangePlayerStats () {
+		SendMessage ("PlayerStatsChanged");
 	}
 }

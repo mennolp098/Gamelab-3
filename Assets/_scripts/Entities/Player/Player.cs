@@ -5,20 +5,34 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour {
 
 	public string usernameText;
+	private UserInfo _myUserInfo;
 
 	// Player stats
 	public float healthPoints;
+
 	public float walkSpeed;
 	public float runSpeed;
-	
-	protected NetworkView _networkView;
+	public float condition;
+	public float maxStamina;
 
-	private UserInfo _myUserInfo;
+	protected NetworkView _networkView;
+	protected Health _healhComponent;
+	protected Movement _movementComponent;
+	
 	// Use this for initialization
 	protected virtual void Awake()
 	{
+		_healhComponent = gameObject.AddComponent<Health> ();
+		_movementComponent = gameObject.AddComponent<Movement> ();
 		_networkView = GetComponent<NetworkView>();
 	}
+
+	private void PlayerStatsChanged(){
+
+		_healhComponent.SetHealth (healthPoints);
+		_movementComponent.SetMovementStats (walkSpeed,runSpeed,condition,maxStamina);
+	}
+
 	void Start()
 	{
 		if(_networkView.isMine)
