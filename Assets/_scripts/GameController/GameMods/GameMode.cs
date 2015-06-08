@@ -6,7 +6,7 @@ public class GameMode : MonoBehaviour {
 	public const string TEAMONE = "Survivors";
 	public const string TEAMTWO = "Zombies";
 
-	protected List<Player> _allPlayers = new List<Player>();
+	protected List<GameObject> _allPlayers = new List<GameObject>();
 	protected NetworkView _networkView;
 	protected string _gameModeName;
 	protected bool _gameEnded = false;
@@ -23,7 +23,7 @@ public class GameMode : MonoBehaviour {
 	{
 	}
 	protected virtual void EndTimer () {
-
+		//TODO if timer hits end then give all survivers a gun.
 	}
 
 	[RPC]

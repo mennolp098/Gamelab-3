@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ZombieGame : GameMode {
+public class ZombieGamemMode : GameMode {
 	public override void StartGameMode ()
 	{
 		base.StartGameMode ();
