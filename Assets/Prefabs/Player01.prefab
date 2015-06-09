@@ -14,6 +14,8 @@ GameObject:
   - 50: {fileID: 5099174}
   - 95: {fileID: 9535786}
   - 61: {fileID: 6104992}
+  - 148: {fileID: 14856030}
+  - 114: {fileID: 11486952}
   m_Layer: 0
   m_Name: Player01
   m_TagString: Untagged
@@ -108,6 +110,29 @@ MonoBehaviour:
   runSpeed: 0
   condition: 0
   maxStamina: 0
+--- !u!114 &11486952
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b2a16333719af84db32f4ca619d86fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!148 &14856030
+NetworkView:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159602}
+  m_Enabled: 1
+  m_StateSynchronization: 1
+  m_Observed: {fileID: 0}
+  m_ViewID:
+    m_ID: 0
+    m_Type: 0
 --- !u!212 &21223592
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -23,9 +23,9 @@ public class Player : MonoBehaviour {
 	protected virtual void Awake()
 	{
 		_networkView = gameObject.AddComponent<NetworkView>();
-		_networkView.observed = this;
 		_healhComponent = gameObject.AddComponent<Health> ();
 		_movementComponent = gameObject.AddComponent<Movement> ();
+		_networkView.observed = _movementComponent;
 	}
 
 	private void PlayerStatsChanged(){

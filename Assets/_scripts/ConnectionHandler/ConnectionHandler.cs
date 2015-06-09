@@ -17,11 +17,9 @@ public class ConnectionHandler : MonoBehaviour {
 
 
 	public HostData[] hostList;
-	public Text informationText;
 	//public GameObject hostButton;
 	//public GameObject menuCanvas;
 	public GameObject player01Prefab;
-	public GameObject player02Prefab;
 	public GameObject currentCamera;
 
 	public string gameName{
@@ -121,10 +119,6 @@ public class ConnectionHandler : MonoBehaviour {
 		Debug.Log(information);
 		ResetScene();
 	}
-	void ClearInfoText()
-	{
-		informationText.text = "";
-	}
 	void DestroyAllNetworkObjects()
 	{
 		Network.DestroyPlayerObjects(Network.player);
@@ -156,12 +150,7 @@ public class ConnectionHandler : MonoBehaviour {
 	private void SpawnPlayer()
 	{
 		GameObject newPlayer = player01Prefab;
-		Vector3 spawnPosition = new Vector3(0,-3.6f,0);
-		if(Network.isClient) 
-		{
-			newPlayer = player02Prefab;
-			spawnPosition = new Vector3(Random.Range(-5f,5f),3.6f,0);
-		}
+		Vector3 spawnPosition = new Vector3(Random.Range(-5,5),Random.Range(-5,5),0);
 		Network.Instantiate(newPlayer, spawnPosition, Quaternion.identity, 0);
 	}
 	public void RefreshHostList()
