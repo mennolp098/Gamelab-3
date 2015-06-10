@@ -84,20 +84,6 @@ public class GameMenu : MonoBehaviour {
 
 	}
 	*/
-	/*
-	public void Update()
-	{
-		if(inGameRoom)
-		{
-			if(Network.isServer)
-			{
-				if(Network.connections.Length > 0)
-				{
-					//TODO: add startgame button once
-				}
-			}
-		}
-	} */
 	public void GoToGameRoom()
 	{
 		gameRoomPanel.SetActive(true);

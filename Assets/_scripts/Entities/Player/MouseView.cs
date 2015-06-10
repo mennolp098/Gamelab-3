@@ -10,6 +10,7 @@ public class MouseView : MonoBehaviour {
 	private Vector2 _hotSpot;
 	private GameObject _camera;
 	private NetworkView _networkView;
+
 	// Use this for initialization
 	void Start () {
 		_camera = GameObject.FindGameObjectWithTag(Tags.Cam);

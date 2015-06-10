@@ -90,7 +90,7 @@ public class MoveableNetworkEntity : MonoBehaviour {
 	{
 		_syncTime += Time.deltaTime;
 		_rigidBody.position = Vector3.Lerp(_syncStartPosition, _syncEndPosition, _syncTime / _syncDelay);
-		
+
 		transform.rotation = Quaternion.Slerp(_syncStartRotation, _syncEndRotation, _syncTime / _syncDelay);
 	}
 	[RPC]
