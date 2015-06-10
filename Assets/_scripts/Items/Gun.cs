@@ -2,18 +2,51 @@
 using System.Collections;
 
 public class Gun : MonoBehaviour, IWeapon {
+	private NetworkView _networkView;
 	private float _ammo;
 	private float _reloadTime;
-	private float _currentReloadTime;
 	private float _shootCooldown;
 	private float _currentShootCooldown;
+	private int _range;
+	void Start()
+	{
+		_networkView = GetComponent<NetworkView>();
+	}
+	public virtual void PullTrigger()
+	{
+		if(_ammo != 0)
+		{
+			if(_currentShootCooldown < Time.time)
+			{
+				_networkView.RPC("Shoot", RPCMode.Server);
+				_currentShootCooldown = Time.time + _shootCooldown;
+			}
+		} 
+		else 
+		{
+			Reload();
+		}
+	}
+	[RPC]
 	public virtual void Shoot()
 	{
-
+		if(Network.isServer)
+		{
+			Vector3 direction = transform.TransformDirection(Vector3.forward);
+			int range = 10;
+			RaycastHit hit;
+			if (Physics.Raycast(transform.position, direction, out hit, range))
+			{
+				if(hit.transform.tag)
+				{
+					//TODO: do dmg
+				}
+			}
+		}
 	}
 	public virtual void Reload()
 	{
-
+		Invoke ("AddAmmo", _reloadTime);
 	}
 	public float ammo
 	{
@@ -33,15 +66,6 @@ public class Gun : MonoBehaviour, IWeapon {
 			return _reloadTime;
 		}
 	}
-	public float currentReloadTime
-	{
-		set{
-			_currentReloadTime = value;
-		}
-		get{
-			return _currentReloadTime;
-		}
-	}
 	public float shootCooldown
 	{
 		set{
@@ -58,6 +82,14 @@ public class Gun : MonoBehaviour, IWeapon {
 		}
 		get{
 			return _currentShootCooldown;
+		}
+	}
+	public int range{
+		set{
+			_range = value;
+		}
+		get {
+			return _range;
 		}
 	}
 }

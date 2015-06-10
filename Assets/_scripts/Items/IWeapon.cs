@@ -3,16 +3,13 @@ using System.Collections;
 
 public interface IWeapon {
 	void Shoot();
+	void PullTrigger();
 	void Reload();
 	float ammo{
 		set;
 		get;
 	}
 	float reloadTime{
-		set;
-		get;
-	}
-	float currentReloadTime{
 		set;
 		get;
 	}
@@ -23,5 +20,9 @@ public interface IWeapon {
 	float currentShootCooldown{
 		set;
 		get;
+	}
+	float range{
+		get;
+		set;
 	}
 }
