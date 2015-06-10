@@ -6,20 +6,26 @@ using UnityEngine.UI;
 public class GameMenu : MonoBehaviour {
 	private ConnectionHandler _connectionHandler;
 	private UserInfo _myUserInfo;
-	private bool _pickedUserName = false;
 	//private GameObject[] allRooms = new GameObject[10];
 
 	public GameObject usernamePanel;
 	public GameObject serverlistPanel;
 	public GameObject mainmenuPanel;
 	public GameObject newServerPanel;
+	public GameObject gameRoomPanel;
+
+	public GameObject startButton;
+	//public GameObject ipDisplay;
 
 	public bool inGameRoom;
 	public List<string> allUsernames = new List<string>();
 	public List<GameObject> allServers = new List<GameObject>();
+	public List<GameObject> allUsernameBoxs = new List<GameObject>();
+	public GameObject usernameBox;
 	public GameObject serverButton;
 	public Text username;
 	public Text servername;
+	public Text ipadress;
 	//public GUIStyle buttonStyle;
 	//public GUIStyle textStyle;
 
@@ -78,20 +84,51 @@ public class GameMenu : MonoBehaviour {
 
 	}
 	*/
+	/*
 	public void Update()
 	{
 		if(inGameRoom)
 		{
-			for (int i = 0; i < allUsernames.Count; i++) 
-			{
-				//TODO: add usernames once
-			}
 			if(Network.isServer)
 			{
 				if(Network.connections.Length > 0)
 				{
 					//TODO: add startgame button once
 				}
+			}
+		}
+	} */
+	public void GoToGameRoom()
+	{
+		gameRoomPanel.SetActive(true);
+		RefreshUsernames();
+		//ipDisplay.GetComponent<UsernameBox>().SetText(_connectionHandler.ip);
+	}
+	public void RefreshUsernames()
+	{
+		foreach(GameObject usernameBox in allUsernameBoxs)
+		{
+			Destroy(usernameBox);
+		}
+		allUsernameBoxs.Clear();
+		if(allUsernames != null)
+		{
+			for(int i = 0; i < allUsernames.Count; i++)
+			{
+				GameObject newUsernameBox = Instantiate(usernameBox, new Vector3(0,0,0),Quaternion.identity) as GameObject;
+				newUsernameBox.transform.SetParent(gameRoomPanel.transform);
+				newUsernameBox.GetComponent<UsernameBox>().SetPosition(new Vector3(290,-100 + i * -30,0));
+				newUsernameBox.GetComponent<UsernameBox>().SetText(allUsernames[i]);
+				allUsernameBoxs.Add(newUsernameBox);
+			}
+		}
+		if(Network.isServer && !Network.isClient)
+		{
+			if(Network.connections.Length > 0)
+			{
+				startButton.SetActive(true);
+			} else {
+				startButton.SetActive(false);
 			}
 		}
 	}
@@ -139,15 +176,26 @@ public class GameMenu : MonoBehaviour {
 	}
 	public void StartNewServer()
 	{
-		_connectionHandler.gameName = servername.text;
-		_connectionHandler.StartServer();
-		newServerPanel.SetActive(false);
+		if(servername.text != "" && _connectionHandler.ip != "")
+		{
+			_connectionHandler.gameName = servername.text;
+			_connectionHandler.StartServer();
+			newServerPanel.SetActive(false);
+		}
 	}
 	public void UsernameButtonClicked()
 	{
-		_myUserInfo.username = username.text;
-		usernamePanel.SetActive(false);
-		mainmenuPanel.SetActive(true);
+		if(username.text != "")
+		{
+			_myUserInfo.username = username.text;
+			if(ipadress.text != "")
+				_connectionHandler.remoteIP = ipadress.text;
+
+			usernamePanel.SetActive(false);
+			mainmenuPanel.SetActive(true);
+		} else {
+			username.text = "Fill in your name";
+		}
 	}
 	public void ServerButtonClicked()
 	{
@@ -161,8 +209,20 @@ public class GameMenu : MonoBehaviour {
 	}
 	public void BackButtonClicked()
 	{
-		serverlistPanel.SetActive(false);
-		newServerPanel.SetActive(false);
+		if(serverlistPanel.activeInHierarchy)
+		{
+			serverlistPanel.SetActive(false);
+		}
+		if(newServerPanel.activeInHierarchy)
+		{
+			newServerPanel.SetActive(false);
+		}
+		if(gameRoomPanel.activeInHierarchy)
+		{
+			gameRoomPanel.SetActive(false);
+			MasterServer.UnregisterHost();
+			Network.Disconnect();
+		}
 		mainmenuPanel.SetActive(true);
 	}
 	public void CreditsButtonClicked()

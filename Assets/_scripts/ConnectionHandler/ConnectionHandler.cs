@@ -7,7 +7,7 @@ public class ConnectionHandler : MonoBehaviour {
 	private const string _typeName = "Zombie Flick";
 
 	private string _gameName = "Server Name";
-	private string _remoteIP = "172.17.60.31";
+	public string remoteIP = "172.17.60.31";
 	private int _remotePort = 25000;
 	private int _maxPlayers = 3;
 	//private int _maxHosts = 10;
@@ -16,6 +16,7 @@ public class ConnectionHandler : MonoBehaviour {
 	private UserInfo _myUserInfo;
 
 
+	public string ip = "";
 	public HostData[] hostList;
 	//public GameObject hostButton;
 	//public GameObject menuCanvas;
@@ -36,13 +37,14 @@ public class ConnectionHandler : MonoBehaviour {
 		_networkView = GetComponent<NetworkView>();
 		_gameMenu = GameObject.FindGameObjectWithTag(Tags.Menu).GetComponent<GameMenu>();
 		_myUserInfo = GetComponent<UserInfo>();
+		ip = Network.player.ipAddress;
 	}
 
 	void Start()
 	{
-		MasterServer.ipAddress = _remoteIP;
+		MasterServer.ipAddress = remoteIP;
 		MasterServer.port = 23466;
-		Network.natFacilitatorIP = _remoteIP;
+		Network.natFacilitatorIP = remoteIP;
 		Network.natFacilitatorPort = 50005;
 		MasterServer.RequestHostList(_typeName);
 	}
@@ -76,6 +78,7 @@ public class ConnectionHandler : MonoBehaviour {
 	public void AddNewUser(string username)
 	{
 		_gameMenu.allUsernames.Add(username);
+		_gameMenu.RefreshUsernames();
 	}
 	[RPC]
 	public void ResetUsernameList()
@@ -93,9 +96,9 @@ public class ConnectionHandler : MonoBehaviour {
 	}
 	public void JoinGameRoom()
 	{
-		_gameMenu.inGameRoom = true;
 		_networkView.RPC("AddNewUser", RPCMode.All,_myUserInfo.username);
 		_networkView.RPC("AskAllUsers", RPCMode.Server);
+		_gameMenu.GoToGameRoom();
 	}
 	void OnConnectedToServer()
 	{
