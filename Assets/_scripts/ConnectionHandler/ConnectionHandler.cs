@@ -7,7 +7,7 @@ public class ConnectionHandler : MonoBehaviour {
 	private const string _typeName = "Zombie Flick";
 
 	private string _gameName = "Server Name";
-	private string _remoteIP = "172.17.56.220";
+	private string _remoteIP = "172.17.60.31";
 	private int _remotePort = 25000;
 	private int _maxPlayers = 3;
 	//private int _maxHosts = 10;
@@ -34,7 +34,7 @@ public class ConnectionHandler : MonoBehaviour {
 	void Awake()
 	{
 		_networkView = GetComponent<NetworkView>();
-		_gameMenu = GetComponent<GameMenu>();
+		_gameMenu = GameObject.FindGameObjectWithTag(Tags.Menu).GetComponent<GameMenu>();
 		_myUserInfo = GetComponent<UserInfo>();
 	}
 
@@ -132,7 +132,7 @@ public class ConnectionHandler : MonoBehaviour {
 	}
 	void ResetScene()
 	{
-		Application.LoadLevel(1);
+		Application.LoadLevel(0);
 	}
 	void OnPlayerDisconnected(NetworkPlayer player)
 	{

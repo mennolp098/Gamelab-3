@@ -1,23 +1,35 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class GameMenu : MonoBehaviour {
 	private ConnectionHandler _connectionHandler;
 	private UserInfo _myUserInfo;
 	private bool _pickedUserName = false;
 	//private GameObject[] allRooms = new GameObject[10];
-	
+
+	public GameObject usernamePanel;
+	public GameObject serverlistPanel;
+	public GameObject mainmenuPanel;
+	public GameObject newServerPanel;
+
 	public bool inGameRoom;
 	public List<string> allUsernames = new List<string>();
-	public GUIStyle buttonStyle;
-	public GUIStyle textStyle;
+	public List<GameObject> allServers = new List<GameObject>();
+	public GameObject serverButton;
+	public Text username;
+	public Text servername;
+	//public GUIStyle buttonStyle;
+	//public GUIStyle textStyle;
 
 	void Awake()
 	{
-		_myUserInfo = GetComponent<UserInfo>();
-		_connectionHandler = GetComponent<ConnectionHandler>();
+		GameObject connector = GameObject.FindGameObjectWithTag(Tags.Connector);
+		_myUserInfo = connector.GetComponent<UserInfo>();
+		_connectionHandler = connector.GetComponent<ConnectionHandler>();
 	}
+	/*
 	void OnGUI()
 	{
 		if (!Network.isClient && !Network.isServer)
@@ -63,5 +75,98 @@ public class GameMenu : MonoBehaviour {
 				}
 			}
 		}
+
+	}
+	*/
+	public void Update()
+	{
+		if(inGameRoom)
+		{
+			for (int i = 0; i < allUsernames.Count; i++) 
+			{
+				//TODO: add usernames once
+			}
+			if(Network.isServer)
+			{
+				if(Network.connections.Length > 0)
+				{
+					//TODO: add startgame button once
+				}
+			}
+		}
+	}
+	public void RefreshServerList()
+	{
+		_connectionHandler.RefreshHostList();
+		foreach(GameObject server in allServers)
+		{
+			Destroy(server);
+		}
+		allServers.Clear();
+		if(_connectionHandler.hostList != null)
+		{
+			for(int i = 0; i < _connectionHandler.hostList.Length; i++)
+			{
+				GameObject newServerBut = Instantiate(serverButton, new Vector3(0,0,0),Quaternion.identity) as GameObject;
+				newServerBut.transform.SetParent(serverlistPanel.transform);
+				newServerBut.GetComponent<ServerButton>().SetServer(_connectionHandler.hostList[i]);
+				newServerBut.GetComponent<ServerButton>().SetPosition(new Vector3(140,-100 + i * -40,0));
+				allServers.Add(newServerBut);
+			}
+		}
+	}
+	public void JoinGame()
+	{
+
+		HostData game = null;
+		foreach(GameObject serverButton in allServers)
+		{
+			ServerButton serverScript = serverButton.GetComponent<ServerButton>();
+			if(serverScript.toggled)
+			{
+				game = serverScript.GetServerData();
+			}
+		}
+		if(game != null)
+		{
+			_connectionHandler.JoinServer(game);
+			serverlistPanel.SetActive(false);
+		}
+	}
+	public void StartGame()
+	{
+		_connectionHandler.StartGameClicked();
+	}
+	public void StartNewServer()
+	{
+		_connectionHandler.gameName = servername.text;
+		_connectionHandler.StartServer();
+		newServerPanel.SetActive(false);
+	}
+	public void UsernameButtonClicked()
+	{
+		_myUserInfo.username = username.text;
+		usernamePanel.SetActive(false);
+		mainmenuPanel.SetActive(true);
+	}
+	public void ServerButtonClicked()
+	{
+		mainmenuPanel.SetActive(false);
+		newServerPanel.SetActive(true);
+	}
+	public void ServerlistButtonClicked()
+	{
+		mainmenuPanel.SetActive(false);
+		serverlistPanel.SetActive(true);
+	}
+	public void BackButtonClicked()
+	{
+		serverlistPanel.SetActive(false);
+		newServerPanel.SetActive(false);
+		mainmenuPanel.SetActive(true);
+	}
+	public void CreditsButtonClicked()
+	{
+		//TODO: credits panel
 	}
 }
