@@ -15,7 +15,7 @@ GameObject:
   - 95: {fileID: 9535786}
   - 61: {fileID: 6104992}
   - 148: {fileID: 14856030}
-  - 114: {fileID: 11486952}
+  - 114: {fileID: 11446922}
   m_Layer: 0
   m_Name: Player01
   m_TagString: Untagged
@@ -30,7 +30,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 159602}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.330000013, y: -.460000008, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -93,6 +93,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTypeAnimatorController: {fileID: 9100000, guid: bab38ae57e66a3547ba649b0c3fc9226,
     type: 2}
+--- !u!114 &11446922
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c316897b3ed96b4d9cf7975334b78e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11473362
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -110,18 +121,6 @@ MonoBehaviour:
   runSpeed: 0
   condition: 0
   maxStamina: 0
---- !u!114 &11486952
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 159602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b2a16333719af84db32f4ca619d86fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mouseTexture: {fileID: 2800000, guid: c090e4011ac22834985a196c32cd9daf, type: 3}
 --- !u!148 &14856030
 NetworkView:
   m_ObjectHideFlags: 1
