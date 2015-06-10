@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 using System.Collections;
 
 public class Gun : MonoBehaviour, IWeapon {
@@ -7,7 +8,7 @@ public class Gun : MonoBehaviour, IWeapon {
 	private float _reloadTime;
 	private float _shootCooldown;
 	private float _currentShootCooldown;
-	private int _range;
+	private float _range;
 	void Start()
 	{
 		_networkView = GetComponent<NetworkView>();
@@ -37,7 +38,7 @@ public class Gun : MonoBehaviour, IWeapon {
 			RaycastHit hit;
 			if (Physics.Raycast(transform.position, direction, out hit, range))
 			{
-				if(hit.transform.tag)
+				if(hit.transform.tag == Tags.Player)
 				{
 					//TODO: do dmg
 				}
@@ -84,7 +85,7 @@ public class Gun : MonoBehaviour, IWeapon {
 			return _currentShootCooldown;
 		}
 	}
-	public int range{
+	public float range{
 		set{
 			_range = value;
 		}
