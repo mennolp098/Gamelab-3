@@ -6,16 +6,14 @@ public class GameController : MonoBehaviour {
 
 	public GameObject endScreen;
 	public GameObject countDown;
-	public GameObject userInterface;
 	private Text _countDownText;
 	private int _counter = 30;
-	void Awake()
-	{
-		_countDownText = countDown.GetComponentInChildren<Text>();
-	}
-
 	void CountDown()
 	{
+		if(_countDownText == null)
+		{
+			_countDownText = countDown.GetComponentInChildren<Text>();
+		}
 		if(_counter != 0)
 		{
 			_counter--;
@@ -40,7 +38,6 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void StartGame(){
-		userInterface.SetActive(true);
 		CountDown();
 	}
 	private void StartGameMode()

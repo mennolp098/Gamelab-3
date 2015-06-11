@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class PlayerType : MonoBehaviour {
 
@@ -7,6 +8,9 @@ public class PlayerType : MonoBehaviour {
 	public const string WALK_ANIM = "Walk";
 	public const string RUN_ANIM = "Run";
 	public const string ATTACK_ANIM = "Attack";
+
+	protected string _currentStatus = "Survivor";
+	protected Text _uiStatus;
 
 	protected Player _player;
 	protected Animator _animator;
@@ -18,10 +22,12 @@ public class PlayerType : MonoBehaviour {
 		_player = GetComponent<Player> ();
 		_animator = GetComponent<Animator> ();
 		_networkView = GetComponent<NetworkView>();
+		_uiStatus = GameObject.Find("StatusText").GetComponent<Text>();
 		ChangePlayerStats ();
 	}
 
 	protected virtual void ChangePlayerStats () {
+		_uiStatus.text = _currentStatus;
 		SendMessage ("PlayerStatsChanged");
 	}
 

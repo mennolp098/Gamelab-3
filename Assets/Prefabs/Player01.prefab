@@ -14,11 +14,11 @@ GameObject:
   - 50: {fileID: 5099174}
   - 95: {fileID: 9535786}
   - 61: {fileID: 6104992}
-  - 148: {fileID: 14856030}
   - 114: {fileID: 11446922}
+  - 148: {fileID: 14844342}
   m_Layer: 0
   m_Name: Player01
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -180,7 +180,7 @@ MonoBehaviour:
   runSpeed: 0
   condition: 0
   maxStamina: 0
---- !u!148 &14856030
+--- !u!148 &14844342
 NetworkView:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

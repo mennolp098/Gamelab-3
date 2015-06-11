@@ -22,6 +22,7 @@ public class ConnectionHandler : MonoBehaviour {
 	//public GameObject menuCanvas;
 	public GameObject player01Prefab;
 	public GameObject currentCamera;
+	public GameObject userInterface;
 
 	public string gameName{
 		set{
@@ -57,6 +58,7 @@ public class ConnectionHandler : MonoBehaviour {
 	private void SpawnAllPlayers()
 	{
 		_gameMenu.gameRoomPanel.SetActive(false);
+		userInterface.SetActive(true);
 		SpawnPlayer();
 		Invoke ("StartGame", 3f);
 	}

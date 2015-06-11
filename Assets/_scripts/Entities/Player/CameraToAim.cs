@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class CameraToAim : MonoBehaviour {
-
+	private NetworkView _networkView;
 
 	private GameObject _camera;
 	private float _lookSpeed = 1.2f;
@@ -12,12 +12,16 @@ public class CameraToAim : MonoBehaviour {
 
 	void Awake(){
 		_camera = GameObject.FindGameObjectWithTag (Tags.Cam);
+		_networkView = GetComponent<NetworkView>();
 	}
 
 	// Update is called once per frame
 	void Update () {
-		CameraMoveToMouse ();
-		RotateToMouse ();
+		if(_networkView.isMine)
+		{
+			CameraMoveToMouse ();
+			RotateToMouse ();
+		}
 	}
 	private void CameraMoveToMouse(){
 		_focusPoint = new Vector3 (gameObject.transform.position.x, gameObject.transform.position.y + 0.5f, _camera.transform.position.z);

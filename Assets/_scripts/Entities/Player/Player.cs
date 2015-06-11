@@ -22,7 +22,7 @@ public class Player : MonoBehaviour {
 	// Use this for initialization
 	protected virtual void Awake()
 	{
-		_networkView = gameObject.AddComponent<NetworkView>();
+		_networkView = GetComponent<NetworkView>();
 		_healhComponent = gameObject.AddComponent<Health> ();
 		_movementComponent = gameObject.AddComponent<Movement> ();
 		_networkView.observed = _movementComponent;
@@ -38,6 +38,7 @@ public class Player : MonoBehaviour {
 	{
 		if(_networkView.isMine)
 		{
+
 			_myUserInfo = GameObject.FindGameObjectWithTag(Tags.Connector).GetComponent<UserInfo>();
 			_networkView.RPC("ShowMyUsername", RPCMode.All, _myUserInfo.username);
 			Debug.Log(_networkView.viewID);
