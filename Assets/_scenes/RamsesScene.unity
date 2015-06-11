@@ -144,6 +144,7 @@ MonoBehaviour:
   ip: 
   player01Prefab: {fileID: 159602, guid: 62567baeb295ca44d995ecce004b1905, type: 2}
   currentCamera: {fileID: 0}
+  userInterface: {fileID: 0}
 --- !u!4 &434681777
 Transform:
   m_ObjectHideFlags: 0

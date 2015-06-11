@@ -30,6 +30,10 @@ public class PlayerType : MonoBehaviour {
 	}
 
 	protected virtual void ChangePlayerStats () {
+		if(_networkView.isMine)
+		{
+			_uiStatus.text = _currentStatus;
+		}
 		SendMessage ("PlayerStatsChanged");
 	}
 
