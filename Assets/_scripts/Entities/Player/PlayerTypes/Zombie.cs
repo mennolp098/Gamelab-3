@@ -11,7 +11,7 @@ public class Zombie : PlayerType {
 		_player.runSpeed = 3;
 		_player.condition = 5;
 		_player.maxStamina = 5;
-
+		_currentStatus = "Zombie";
 
 		base.ChangePlayerStats ();
 	}

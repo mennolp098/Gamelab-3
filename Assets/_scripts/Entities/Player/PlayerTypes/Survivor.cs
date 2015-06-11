@@ -14,6 +14,7 @@ public class Survivor : PlayerType {
 		_player.runSpeed = 5;
 		_player.condition = 1;
 		_player.maxStamina = 10;
+		_currentStatus = "Survivor";
 
 		base.ChangePlayerStats ();
 	}
