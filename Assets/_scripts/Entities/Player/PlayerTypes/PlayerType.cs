@@ -23,6 +23,13 @@ public class PlayerType : MonoBehaviour {
 		SendMessage ("PlayerStatsChanged");
 	}
 
+
+
+	private void PlayAnimationNetwork(string animation){
+		GetComponent<NetworkView>().RPC("ShowMyUsername", RPCMode.All, animation);
+	}
+
+	[RPC]
 	protected virtual void PlayAnimation(string animation){
 
 	}

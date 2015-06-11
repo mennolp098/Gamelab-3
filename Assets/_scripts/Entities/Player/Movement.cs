@@ -41,7 +41,6 @@ public class Movement : MoveableNetworkEntity {
 		//Check running
 		if(Input.GetKey(KeyCode.LeftShift))
 		{
-			BroadcastMessage("PlayAnimation",PlayerType.RUN_ANIM);
 			Run();
 		} 
 		else if(Input.GetKeyUp(KeyCode.LeftShift))
@@ -61,6 +60,7 @@ public class Movement : MoveableNetworkEntity {
 			_speed = _runSpeed;
 			_stamina -= (5 / _playerCondition) * Time.deltaTime;
 			_currentRegenCooldown = Time.time + _regenCooldown;
+			BroadcastMessage("PlayAnimation",PlayerType.RUN_ANIM);
 		}
 		else
 		{
