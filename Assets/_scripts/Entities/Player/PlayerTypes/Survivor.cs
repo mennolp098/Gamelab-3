@@ -32,4 +32,21 @@ public class Survivor : PlayerType {
 		gameObject.AddComponent<Zombie> (); //<-- check met de component niet met de tag. Tag is en blijft "Player" voor het systeem
 		Destroy (this);
 	}
+
+	protected override void PlayAnimation (string animation)
+	{
+		base.PlayAnimation (animation);
+		_animator.speed = 1;
+		string animationToPlay = animation;
+		if (animationToPlay == PlayerType.RUN_ANIM) {
+			_animator.speed = 2;
+			animationToPlay = PlayerType.WALK_ANIM;
+		}
+		if (GetComponent<Shoot> () != null) {
+			animationToPlay = "Gun" + animationToPlay;
+		}
+
+		_animator.Play (animationToPlay);
+	}
+
 }

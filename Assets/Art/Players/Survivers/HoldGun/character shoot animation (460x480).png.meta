@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 73a1e1aa5860d174ba1cd91d401a896d
-timeCreated: 1433754146
+guid: ed31064d98e6df0479dd1e32e537f248
+timeCreated: 1433947814
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Fire_spritesheet_850x550-01_0
-    21300002: Fire_spritesheet_850x550-01_1
-    21300004: Fire_spritesheet_850x550-01_2
-    21300006: Fire_spritesheet_850x550-01_3
-    21300008: Fire_spritesheet_850x550-01_4
-    21300010: Fire_spritesheet_850x550-01_5
-    21300012: Fire_spritesheet_850x550-01_6
-    21300014: Fire_spritesheet_850x550-01_7
-    21300016: Fire_spritesheet_850x550-01_8
-    21300018: Fire_spritesheet_850x550-01_9
+    21300000: character shoot animation (460x480)_0
+    21300002: character shoot animation (460x480)_1
+    21300004: character shoot animation (460x480)_2
+    21300006: character shoot animation (460x480)_3
+    21300008: character shoot animation (460x480)_4
+    21300010: character shoot animation (460x480)_5
+    21300012: character shoot animation (460x480)_6
+    21300014: character shoot animation (460x480)_7
+    21300016: character shoot animation (460x480)_8
+    21300018: character shoot animation (460x480)_9
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -59,104 +59,104 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: Fire_spritesheet_850x550-01_0
+    - name: character shoot animation (460x480)_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 850
-        width: 550
-        height: 850
-      alignment: 2
+        y: 1568
+        width: 460
+        height: 480
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Fire_spritesheet_850x550-01_1
+    - name: character shoot animation (460x480)_1
       rect:
         serializedVersion: 2
-        x: 550
-        y: 850
-        width: 550
-        height: 850
-      alignment: 2
+        x: 460
+        y: 1568
+        width: 460
+        height: 480
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Fire_spritesheet_850x550-01_2
+    - name: character shoot animation (460x480)_2
       rect:
         serializedVersion: 2
-        x: 1100
-        y: 850
-        width: 550
-        height: 850
-      alignment: 2
+        x: 920
+        y: 1568
+        width: 460
+        height: 480
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Fire_spritesheet_850x550-01_3
+    - name: character shoot animation (460x480)_3
       rect:
         serializedVersion: 2
-        x: 1650
-        y: 850
-        width: 550
-        height: 850
-      alignment: 2
+        x: 1380
+        y: 1568
+        width: 460
+        height: 480
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Fire_spritesheet_850x550-01_4
-      rect:
-        serializedVersion: 2
-        x: 2200
-        y: 850
-        width: 550
-        height: 850
-      alignment: 2
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Fire_spritesheet_850x550-01_5
+    - name: character shoot animation (460x480)_4
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 550
-        height: 850
-      alignment: 2
+        y: 1088
+        width: 460
+        height: 480
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Fire_spritesheet_850x550-01_6
+    - name: character shoot animation (460x480)_5
       rect:
         serializedVersion: 2
-        x: 550
-        y: 0
-        width: 550
-        height: 850
-      alignment: 2
+        x: 460
+        y: 1088
+        width: 460
+        height: 480
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Fire_spritesheet_850x550-01_7
+    - name: character shoot animation (460x480)_6
       rect:
         serializedVersion: 2
-        x: 1100
-        y: 0
-        width: 550
-        height: 850
-      alignment: 2
+        x: 920
+        y: 1088
+        width: 460
+        height: 480
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Fire_spritesheet_850x550-01_8
+    - name: character shoot animation (460x480)_7
       rect:
         serializedVersion: 2
-        x: 1650
-        y: 0
-        width: 550
-        height: 850
-      alignment: 2
+        x: 1380
+        y: 1088
+        width: 460
+        height: 480
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Fire_spritesheet_850x550-01_9
+    - name: character shoot animation (460x480)_8
       rect:
         serializedVersion: 2
-        x: 2200
-        y: 0
-        width: 550
-        height: 850
-      alignment: 2
+        x: 0
+        y: 608
+        width: 460
+        height: 480
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: character shoot animation (460x480)_9
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 608
+        width: 460
+        height: 480
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 

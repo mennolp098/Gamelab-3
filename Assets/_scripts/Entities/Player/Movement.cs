@@ -33,9 +33,15 @@ public class Movement : MoveableNetworkEntity {
 		float horizontalAxis = Input.GetAxis("Horizontal");
 		float verticalAxis = Input.GetAxis("Vertical");
 		_rigidBody.velocity = new Vector3(horizontalAxis,verticalAxis,0) * _speed;
+		if (_rigidBody.velocity.magnitude > 0.5f) {
+			BroadcastMessage ("PlayAnimation",PlayerType.WALK_ANIM);
+		} else {
+			BroadcastMessage("PlayAnimation",PlayerType.IDLE_ANIM);
+		}
 		//Check running
 		if(Input.GetKey(KeyCode.LeftShift))
 		{
+			BroadcastMessage("PlayAnimation",PlayerType.RUN_ANIM);
 			Run();
 		} 
 		else if(Input.GetKeyUp(KeyCode.LeftShift))
