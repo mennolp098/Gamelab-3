@@ -49,4 +49,19 @@ public class Survivor : PlayerType {
 			_networkView.RPC("PickupGun", RPCMode.All);
 		}
 	}
+	protected override void PlayAnimation (string animation)
+	{
+		base.PlayAnimation (animation);
+		_animator.speed = 1;
+		string animationToPlay = animation;
+		if (animationToPlay == PlayerType.RUN_ANIM) {
+			_animator.speed = 2;
+			animationToPlay = PlayerType.WALK_ANIM;
+		}
+		if (GetComponent<Gun> () != null) {
+			animationToPlay = "Gun" + animationToPlay;
+		}
+
+		_animator.Play (animationToPlay);
+	}
 }

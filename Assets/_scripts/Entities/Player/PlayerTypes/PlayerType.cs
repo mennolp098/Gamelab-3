@@ -3,6 +3,11 @@ using System.Collections;
 
 public class PlayerType : MonoBehaviour {
 
+	public const string IDLE_ANIM = "Idle";
+	public const string WALK_ANIM = "Walk";
+	public const string RUN_ANIM = "Run";
+	public const string ATTACK_ANIM = "Attack";
+
 	protected Player _player;
 	protected Animator _animator;
 	public RuntimeAnimatorController playerTypeAnimatorController;
@@ -19,4 +24,9 @@ public class PlayerType : MonoBehaviour {
 	protected virtual void ChangePlayerStats () {
 		SendMessage ("PlayerStatsChanged");
 	}
+
+	protected virtual void PlayAnimation(string animation){
+
+	}
+
 }

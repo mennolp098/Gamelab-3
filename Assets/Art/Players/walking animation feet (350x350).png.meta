@@ -1,0 +1,264 @@
+fileFormatVersion: 2
+guid: bccc42a5af1b3ef408c82d47d01ef2e3
+timeCreated: 1434001581
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: walking animation feet (350x350)_0
+    21300002: walking animation feet (350x350)_1
+    21300004: walking animation feet (350x350)_2
+    21300006: walking animation feet (350x350)_3
+    21300008: walking animation feet (350x350)_4
+    21300010: walking animation feet (350x350)_5
+    21300012: walking animation feet (350x350)_6
+    21300014: walking animation feet (350x350)_7
+    21300016: walking animation feet (350x350)_8
+    21300018: walking animation feet (350x350)_9
+    21300020: walking animation feet (350x350)_10
+    21300022: walking animation feet (350x350)_11
+    21300024: walking animation feet (350x350)_12
+    21300026: walking animation feet (350x350)_13
+    21300028: walking animation feet (350x350)_14
+    21300030: walking animation feet (350x350)_15
+    21300032: walking animation feet (350x350)_16
+    21300034: walking animation feet (350x350)_17
+    21300036: walking animation feet (350x350)_18
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: walking animation feet (350x350)_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1698
+        width: 350
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walking animation feet (350x350)_1
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 1698
+        width: 350
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walking animation feet (350x350)_2
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 1698
+        width: 350
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walking animation feet (350x350)_3
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 1698
+        width: 350
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walking animation feet (350x350)_4
+      rect:
+        serializedVersion: 2
+        x: 1400
+        y: 1698
+        width: 350
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walking animation feet (350x350)_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1348
+        width: 350
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walking animation feet (350x350)_6
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 1348
+        width: 350
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walking animation feet (350x350)_7
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 1348
+        width: 350
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walking animation feet (350x350)_8
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 1348
+        width: 350
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walking animation feet (350x350)_9
+      rect:
+        serializedVersion: 2
+        x: 1400
+        y: 1348
+        width: 350
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walking animation feet (350x350)_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 998
+        width: 350
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walking animation feet (350x350)_11
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 998
+        width: 350
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walking animation feet (350x350)_12
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 998
+        width: 350
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walking animation feet (350x350)_13
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 998
+        width: 350
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walking animation feet (350x350)_14
+      rect:
+        serializedVersion: 2
+        x: 1400
+        y: 998
+        width: 350
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walking animation feet (350x350)_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 648
+        width: 350
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walking animation feet (350x350)_16
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 648
+        width: 350
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walking animation feet (350x350)_17
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 648
+        width: 350
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walking animation feet (350x350)_18
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 648
+        width: 350
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
