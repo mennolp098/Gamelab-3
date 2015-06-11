@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class Survivor : PlayerType {
+	private Gun _gunComponent;
 
 	protected override void ChangePlayerStats (){
 		//gameObject.GetComponent<SpriteRenderer> ().sprite = Resources.Load("Sprites/PlayerArt/Survivor") as Sprite;// <---- voor de correcte sprite (oud idee).
@@ -18,7 +19,23 @@ public class Survivor : PlayerType {
 
 		base.ChangePlayerStats ();
 	}
-
+	private void Update()
+	{
+		if(_networkView.isMine)
+		{
+			if(Input.GetMouseButton(0))
+			{
+				if(_gunComponent == null && GetComponent<Gun>())
+				{
+					_gunComponent = GetComponent<Gun>();
+				}
+				if(_gunComponent != null)
+				{
+					_gunComponent.PullTrigger();
+				}
+			}
+		}
+	}
 	public void BecomeZombie()
 	{
 		GetComponent<NetworkView>().RPC("NetworkBecomeZombie",RPCMode.All);
