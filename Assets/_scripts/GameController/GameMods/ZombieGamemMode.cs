@@ -8,9 +8,10 @@ public class ZombieGamemMode : GameMode {
 	public override void StartGameMode ()
 	{
 		base.StartGameMode ();
-		Debug.Log(_allPlayers.Count);
 		if(Network.isServer)
+		{
 			_allPlayers[(int)Random.Range(0,_allPlayers.Count)].GetComponent<Survivor>().BecomeZombie();
+		}
 	}
 	protected override void EndTimer ()
 	{
