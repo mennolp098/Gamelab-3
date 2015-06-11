@@ -2,6 +2,9 @@
 using System.Collections;
 
 public class ZombieGamemMode : GameMode {
+	public GameObject[] gunSpawnPoints = new GameObject[0];
+	public GameObject gunPrefab;
+
 	public override void StartGameMode ()
 	{
 		base.StartGameMode ();
@@ -10,17 +13,14 @@ public class ZombieGamemMode : GameMode {
 	protected override void EndTimer ()
 	{
 		base.EndTimer ();
-		//TODO: make survivor component and uncomment function V
-		/*
-		foreach(Player player in _allPlayers)
+		if(Network.isServer)
+			SpawnGuns();
+	}
+	private void SpawnGuns()
+	{
+		for (int i = 0; i < gunSpawnPoints.Length; i++) 
 		{
-
-			if(player.GetComponent<Survivor>())
-			{
-				SurvivorComponent = player.GetComponent<Survivor>();
-				SurvivorComponent.GetWeapon();
-			}
+			Network.Instantiate(gunPrefab,gunSpawnPoints[i].transform.position,Quaternion.identity, 1);
 		}
-		*/
 	}
 }

@@ -8,5 +8,6 @@ public class Pistol : Gun {
 		reloadTime = 2;
 		shootCooldown = 0.5f;
 		currentShootCooldown = 0;
+		damage = 10;
 	}
 }
