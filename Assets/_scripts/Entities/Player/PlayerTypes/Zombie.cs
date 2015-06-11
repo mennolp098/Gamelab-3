@@ -16,9 +16,9 @@ public class Zombie : PlayerType {
 		base.ChangePlayerStats ();
 	}
 	[RPC]
-	protected override void PlayAnimation (string animation)
+	protected override void PlayAnimationNetwork (string animation)
 	{
-		base.PlayAnimation (animation);
+		base.PlayAnimationNetwork (animation);
 		_animator.speed = 1;
 		string animationToPlay = animation;
 		if (animationToPlay == PlayerType.RUN_ANIM) {

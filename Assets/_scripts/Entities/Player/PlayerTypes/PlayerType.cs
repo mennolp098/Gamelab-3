@@ -9,9 +9,10 @@ public class PlayerType : MonoBehaviour {
 	public const string RUN_ANIM = "Run";
 	public const string ATTACK_ANIM = "Attack";
 
+
 	protected string _currentStatus = "Survivor";
 	protected Text _uiStatus;
-
+	
 	protected Player _player;
 	protected Animator _animator;
 	public RuntimeAnimatorController playerTypeAnimatorController;
@@ -21,25 +22,26 @@ public class PlayerType : MonoBehaviour {
 	protected virtual void Start () {
 		_player = GetComponent<Player> ();
 		_animator = GetComponent<Animator> ();
-		_networkView = GetComponent<NetworkView>();
-		_uiStatus = GameObject.Find("StatusText").GetComponent<Text>();
+		_networkView = GetComponent<NetworkView> ();
+		if (GameObject.Find ("StatusText") != null) {
+			_uiStatus = GameObject.Find ("StatusText").GetComponent<Text> ();
+		}
 		ChangePlayerStats ();
 	}
 
 	protected virtual void ChangePlayerStats () {
-		_uiStatus.text = _currentStatus;
 		SendMessage ("PlayerStatsChanged");
 	}
 
 
-
-	private void PlayAnimationNetwork(string animation){
-		GetComponent<NetworkView>().RPC("ShowMyUsername", RPCMode.All, animation);
-	}
-
 	[RPC]
-	protected virtual void PlayAnimation(string animation){
-
+	private void PlayAnimation(string animation){
+		_networkView.RPC("PlayAnimationNetwork", RPCMode.All, animation);
+	}
+	
+	[RPC]
+	protected virtual void PlayAnimationNetwork(string animation){
+		
 	}
 
 }
