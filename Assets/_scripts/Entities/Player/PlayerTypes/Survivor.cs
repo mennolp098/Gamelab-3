@@ -8,7 +8,7 @@ public class Survivor : PlayerType {
 		//TODO De animator moet verandert worden als je in een zombie verandert niet de sprite van de animator..
 		//GetComponent<Collider2D> ().bounds.size = new Vector3 (2, 4, 1); <---- voor de correcte box collision.
 
-		_animator.runtimeAnimatorController = playerTypeAnimatorController;
+		_animator.runtimeAnimatorController = Resources.Load("Art/Animators/SurviverAnimator") as RuntimeAnimatorController;
 		_player.healthPoints = 50; // not sure if 200 but at least you can see it must be changed here <3
 		_player.walkSpeed = 3;
 		_player.runSpeed = 5;
