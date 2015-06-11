@@ -6,6 +6,7 @@ public class GameController : MonoBehaviour {
 
 	public GameObject endScreen;
 	public GameObject countDown;
+	public GameObject userInterface;
 	private Text _countDownText;
 	private int _counter = 30;
 	void Awake()
@@ -39,6 +40,7 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void StartGame(){
+		userInterface.SetActive(true);
 		CountDown();
 	}
 	private void StartGameMode()

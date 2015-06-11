@@ -25,4 +25,8 @@ public interface IWeapon {
 		get;
 		set;
 	}
+	float damage{
+		set;
+		get;
+	}
 }

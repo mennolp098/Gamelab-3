@@ -13,8 +13,7 @@ public class GameMode : MonoBehaviour {
 	protected GameObject _timer;
 
 	protected virtual void Awake () {
-		_timer = GameObject.Find ("Timer");
-		_timer.GetComponent<Timer> ().TimerEndedEvent += EndTimer;
+
 	}
 	protected virtual void Start(){
 		_networkView = GetComponent<NetworkView>();
@@ -39,6 +38,10 @@ public class GameMode : MonoBehaviour {
 	}
 
 	public virtual void StartGameMode(){
+
+		_timer = GameObject.Find ("Timer");
+		_timer.GetComponent<Timer> ().TimerEndedEvent += EndTimer;
+
 		GameObject[] players = GameObject.FindGameObjectsWithTag(Tags.Player);
 		foreach(GameObject player in players)
 		{

@@ -8,4 +8,5 @@ public class Tags : MonoBehaviour {
 	public const string GameController = "GameController";
 	public const string Cam = "MainCamera";
 	public const string Menu = "GameMenu";
+	public const string Gun = "Gun";
 }

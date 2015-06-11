@@ -32,4 +32,21 @@ public class Survivor : PlayerType {
 		gameObject.AddComponent<Zombie> (); //<-- check met de component niet met de tag. Tag is en blijft "Player" voor het systeem
 		Destroy (this);
 	}
+
+	[RPC]
+	private void PickupGun()
+	{
+		if(GetComponent<Pistol>() == null)
+		{
+			gameObject.AddComponent<Pistol>();
+		}
+	}
+
+	void OnTriggerEnter2D(Collider2D other)
+	{
+		if(other.transform.tag == Tags.Gun)
+		{
+			_networkView.RPC("PickupGun", RPCMode.All);
+		}
+	}
 }

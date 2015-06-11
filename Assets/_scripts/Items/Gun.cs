@@ -9,6 +9,7 @@ public class Gun : MonoBehaviour, IWeapon {
 	private float _shootCooldown;
 	private float _currentShootCooldown;
 	private float _range;
+	private float _damage;
 	void Start()
 	{
 		_networkView = GetComponent<NetworkView>();
@@ -41,6 +42,7 @@ public class Gun : MonoBehaviour, IWeapon {
 				if(hit.transform.tag == Tags.Player)
 				{
 					//TODO: do dmg
+					hit.transform.GetComponent<Health>().AddSubHealth(-damage);
 				}
 			}
 		}
@@ -91,6 +93,14 @@ public class Gun : MonoBehaviour, IWeapon {
 		}
 		get {
 			return _range;
+		}
+	}
+	public float damage{
+		set{
+			_damage = value;
+		}
+		get {
+			return _damage;
 		}
 	}
 }

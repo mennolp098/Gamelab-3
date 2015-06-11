@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Connector
   - GameMenu
+  - Gun
   layers:
   - Default
   - TransparentFX

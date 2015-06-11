@@ -13,6 +13,13 @@ public class Health : MonoBehaviour {
 	private float _maxHealth;
 	private float _currentHealth;
 
+	private NetworkView _networkView;
+
+	void Awake()
+	{
+		_networkView = GetComponent<NetworkView>();
+	}
+
 	public void SetHealth(float amountMaxHealth,float currentHealth = float.NaN){
 		_maxHealth = amountMaxHealth;
 		if (float.IsNaN (currentHealth)) {
@@ -20,6 +27,7 @@ public class Health : MonoBehaviour {
 		} else {
 			_currentHealth = currentHealth;
 		}
+		_networkView.RPC("UpdateHealth", RPCMode.Others, _currentHealth);
 	}
 
 	public void AddSubHealth(float amount){
@@ -39,6 +47,13 @@ public class Health : MonoBehaviour {
 				}
 			}
 		}
+		_networkView.RPC("UpdateHealth", RPCMode.Others, _currentHealth);
+	}
+
+	[RPC]
+	private void UpdateHealth(float newHealth)
+	{
+		_currentHealth = newHealth;
 	}
 
 	public float currentHealth{
