@@ -83,4 +83,9 @@ public class Movement : MoveableNetworkEntity {
 			_stamina = _maxStamina;
 		}
 	}
+	private void Shooting()
+	{
+		float pushForce = 0.25f;
+		this.transform.position += -transform.up * pushForce;
+	}
 }

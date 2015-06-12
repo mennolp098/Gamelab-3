@@ -3,6 +3,8 @@ using UnityEngine;
 using System.Collections;
 
 public class Gun : MonoBehaviour, IWeapon {
+	public GameObject muzzleFlare;
+
 	private NetworkView _networkView;
 	private float _ammo;
 	private float _maxAmmo;
@@ -20,8 +22,14 @@ public class Gun : MonoBehaviour, IWeapon {
 	{
 		if(_ammo != 0 && _currentShootCooldown <= Time.time)
 		{
-			Debug.Log("Shooting!");
-			_networkView.RPC("Shoot", RPCMode.Server);
+			//Debug.Log("Shooting!");
+			SendMessage("Shooting");
+			if(Network.isClient)
+			{
+				_networkView.RPC("Shoot", RPCMode.Server);
+			} else {
+				Shoot();
+			}
 			_currentShootCooldown = Time.time + _shootCooldown;
 		} 
 		else 
@@ -33,22 +41,21 @@ public class Gun : MonoBehaviour, IWeapon {
 	public virtual void Shoot()
 	{
 		_ammo--;
-		//if(Network.isServer)
-		//{
-			Debug.Log("PANG!");
-			Vector3 direction = transform.TransformDirection(Vector3.forward);
-			int range = 10;
-			RaycastHit hit;
-			if (Physics.Raycast(transform.position, direction, out hit, range))
+		Vector3 muzzleFlarePos = this.transform.position;
+		muzzleFlarePos.z = -1f;
+		Network.Instantiate(muzzleFlare,muzzleFlarePos,muzzleFlare.transform.rotation, 1);
+		//Debug.Log("PANG!");
+		RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, transform.up, range);
+		Debug.DrawRay(transform.position,transform.up, Color.red, 1);
+		foreach(RaycastHit2D hit in hits)
+		{
+			if(hit.transform.tag == Tags.Player && hit.transform != this.transform)
 			{
-				if(hit.transform.tag == Tags.Player)
-				{
-					//TODO: do dmg
-					hit.transform.GetComponent<Health>().AddSubHealth(-damage);
-					Debug.Log("AUWO! ---> "  + hit.transform.name);
-				}
+				//Debug.Log("Hitting a player: " + hit.transform.name);
+				hit.transform.GetComponent<Health>().AddSubHealth(-damage);
+				break;
 			}
-		//}
+		}
 	}
 	public virtual void Reload()
 	{

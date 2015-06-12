@@ -43,10 +43,6 @@ public class Survivor : PlayerType {
 	[RPC]
 	private void NetworkBecomeZombie()
 	{
-		//TODO: Change sprite;
-		//TODO: Add Zombie Collision;
-		//this.transform.tag = Tags.Zombie;
-
 		gameObject.AddComponent<Zombie> (); //<-- check met de component niet met de tag. Tag is en blijft "Player" voor het systeem
 		Destroy (this);
 	}
@@ -83,5 +79,9 @@ public class Survivor : PlayerType {
 		}
 
 		_animator.Play (animationToPlay);
+	}
+	private void Shooting()
+	{
+		_networkView.RPC("PlayAnimationNetwork", RPCMode.All, "Shoot");
 	}
 }

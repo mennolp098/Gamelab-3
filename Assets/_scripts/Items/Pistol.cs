@@ -6,6 +6,7 @@ public class Pistol : Gun {
 	{
 		ammo = 7;
 		maxAmmo = 7;
+		range = 100;
 		reloadTime = 10;
 		shootCooldown = 0.5f;
 		currentShootCooldown = 0;

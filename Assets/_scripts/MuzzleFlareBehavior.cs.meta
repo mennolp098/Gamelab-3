@@ -1,11 +1,10 @@
 fileFormatVersion: 2
-guid: 514256a581491df4589e0407acd6decb
-timeCreated: 1434103575
+guid: 3bf148f7777935d49b49c250fc5424c7
+timeCreated: 1434103467
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences:
-  - muzzleFlare: {fileID: 182854, guid: 5068aa4b240d6eb4e98e730b00c9773a, type: 2}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
