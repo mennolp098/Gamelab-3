@@ -2,7 +2,8 @@
 using System.Collections;
 
 public class Zombie : PlayerType {
-
+	private float _attackRange = 0.5f;
+	private float _attackRadius = 0.75f;
 	protected override void ChangePlayerStats () {
 		//TODO GetComponent<SpriteRenderer> ().sprite = Resources.Load (Zombiesprite); <----
 		_animator.runtimeAnimatorController = Resources.Load("Art/Animators/ZombieAnimator") as RuntimeAnimatorController;
@@ -15,6 +16,47 @@ public class Zombie : PlayerType {
 
 		base.ChangePlayerStats ();
 	}
+	void Update()
+	{
+		if(_networkView.isMine)
+		{
+			AttackInput();
+		}
+	}
+	private void AttackInput()
+	{
+		if(Input.GetMouseButton(0))
+		{
+			Attack ();
+		}
+	}
+	private void Attack()
+	{
+		_networkView.RPC("CreateCollision", RPCMode.Server);
+		BroadcastMessage("PlayAnimation", ATTACK_ANIM);
+	}
+	[RPC]
+	private void CreateCollision()
+	{
+		Vector2 pos = new Vector2(this.transform.position.x,this.transform.position.y);
+		pos += new Vector2(transform.up.x,transform.up.y) * _attackRange;
+		Collider2D[] cols = Physics2D.OverlapCircleAll(pos,_attackRadius);
+		foreach(Collider2D col in cols)
+		{
+			if(col.transform.tag == Tags.Player && col.GetComponent<Survivor>())
+			{
+				col.GetComponent<Survivor>().BecomeZombie();
+				break;
+			}
+		}
+	}
+
+	private void OnDrawGizmos()
+	{
+		Gizmos.color = Color.red;
+		Gizmos.DrawSphere(this.transform.position + this.transform.up * _attackRange, _attackRadius);
+	}
+
 	[RPC]
 	protected override void PlayAnimationNetwork (string animation)
 	{
@@ -26,14 +68,5 @@ public class Zombie : PlayerType {
 			animationToPlay = PlayerType.WALK_ANIM;
 		}
 		_animator.Play (animationToPlay);
-	}
-
-	//Zombie collision
-	void OnColliderEnter2D(Collider2D other)
-	{
-		if(other.transform.tag == Tags.Player && other.GetComponent<Survivor>())
-		{
-			other.GetComponent<Survivor>().BecomeZombie();
-		}
 	}
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 using System.Collections;
 
 public class Gun : MonoBehaviour, IWeapon {
-	public GameObject muzzleFlare;
+	private GameObject _muzzleFlare;
 
 	private NetworkView _networkView;
 	private float _ammo;
@@ -17,6 +17,7 @@ public class Gun : MonoBehaviour, IWeapon {
 	void Start()
 	{
 		_networkView = GetComponent<NetworkView>();
+		_muzzleFlare = Resources.Load("Prefabs/MuzzleFlare", typeof(GameObject)) as GameObject;
 	}
 	public virtual void PullTrigger()
 	{
@@ -54,7 +55,7 @@ public class Gun : MonoBehaviour, IWeapon {
 		_ammo--;
 		Vector3 muzzleFlarePos = this.transform.position;
 		muzzleFlarePos.z = -1f;
-		Network.Instantiate(muzzleFlare,muzzleFlarePos,muzzleFlare.transform.rotation, 1);
+		Network.Instantiate(_muzzleFlare,muzzleFlarePos,_muzzleFlare.transform.rotation, 1);
 		//Debug.Log("PANG!");
 		RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, transform.up, range);
 		Debug.DrawRay(transform.position,transform.up, Color.red, 1);

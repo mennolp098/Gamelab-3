@@ -24,7 +24,7 @@ public class Survivor : PlayerType {
 
 	//TODO Animatie function die becomeZombie aanroept
 	public void BecomeZombie(){
-		PlayAnimationNetwork (TURN_ZOMBIE_ANIM);
+		_networkView.RPC("PlayAnimationNetwork", RPCMode.All, TURN_ZOMBIE_ANIM);
 	}
 
 	private void Update()
@@ -46,7 +46,7 @@ public class Survivor : PlayerType {
 	}
 	public void BecomeZombieCallNetwork()
 	{
-		GetComponent<NetworkView>().RPC("NetworkBecomeZombie",RPCMode.All);
+		_networkView.RPC("NetworkBecomeZombie",RPCMode.All);
 	}
 	[RPC]
 	private void NetworkBecomeZombie()
