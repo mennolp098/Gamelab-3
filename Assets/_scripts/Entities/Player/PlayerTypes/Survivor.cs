@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class Survivor : PlayerType {
+	private Gun _gunComponent;
 
 	public const string TURN_ZOMBIE_ANIM = "TurnZombie";
 
@@ -26,17 +27,30 @@ public class Survivor : PlayerType {
 		PlayAnimationNetwork (TURN_ZOMBIE_ANIM);
 	}
 
-	private void BecomeZombieCallNetwork()
+	private void Update()
+	{
+		if(_networkView.isMine)
+		{
+			if(Input.GetMouseButton(0))
+			{
+				if(_gunComponent == null && GetComponent<Gun>())
+				{
+					_gunComponent = GetComponent<Gun>();
+				}
+				if(_gunComponent != null)
+				{
+					_gunComponent.PullTrigger();
+				}
+			}
+		}
+	}
+	public void BecomeZombieCallNetwork()
 	{
 		GetComponent<NetworkView>().RPC("NetworkBecomeZombie",RPCMode.All);
 	}
 	[RPC]
 	private void NetworkBecomeZombie()
 	{
-		//TODO: Change sprite;
-		//TODO: Add Zombie Collision;
-		//this.transform.tag = Tags.Zombie;
-
 		gameObject.AddComponent<Zombie> (); //<-- check met de component niet met de tag. Tag is en blijft "Player" voor het systeem
 		Destroy (this);
 	}
@@ -75,5 +89,9 @@ public class Survivor : PlayerType {
 		// if death animation then string is transform into zombie.
 
 		_animator.Play (animationToPlay);
+	}
+	private void Shooting()
+	{
+		_networkView.RPC("PlayAnimationNetwork", RPCMode.All, "Shoot");
 	}
 }

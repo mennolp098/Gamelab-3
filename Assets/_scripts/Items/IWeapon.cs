@@ -9,6 +9,10 @@ public interface IWeapon {
 		set;
 		get;
 	}
+	float maxAmmo{
+		set;
+		get;
+	}
 	float reloadTime{
 		set;
 		get;

@@ -3,26 +3,34 @@ using UnityEngine;
 using System.Collections;
 
 public class Gun : MonoBehaviour, IWeapon {
+	public GameObject muzzleFlare;
+
 	private NetworkView _networkView;
 	private float _ammo;
+	private float _maxAmmo;
 	private float _reloadTime;
 	private float _shootCooldown;
 	private float _currentShootCooldown;
 	private float _range;
 	private float _damage;
+	private bool _isReloading = false;
 	void Start()
 	{
 		_networkView = GetComponent<NetworkView>();
 	}
 	public virtual void PullTrigger()
 	{
-		if(_ammo != 0)
+		if(_ammo != 0 && _currentShootCooldown <= Time.time)
 		{
-			if(_currentShootCooldown < Time.time)
+			//Debug.Log("Shooting!");
+			SendMessage("Shooting");
+			if(Network.isClient)
 			{
 				_networkView.RPC("Shoot", RPCMode.Server);
-				_currentShootCooldown = Time.time + _shootCooldown;
+			} else {
+				Shoot();
 			}
+			_currentShootCooldown = Time.time + _shootCooldown;
 		} 
 		else 
 		{
@@ -32,24 +40,35 @@ public class Gun : MonoBehaviour, IWeapon {
 	[RPC]
 	public virtual void Shoot()
 	{
-		if(Network.isServer)
+		_ammo--;
+		Vector3 muzzleFlarePos = this.transform.position;
+		muzzleFlarePos.z = -1f;
+		Network.Instantiate(muzzleFlare,muzzleFlarePos,muzzleFlare.transform.rotation, 1);
+		//Debug.Log("PANG!");
+		RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, transform.up, range);
+		Debug.DrawRay(transform.position,transform.up, Color.red, 1);
+		foreach(RaycastHit2D hit in hits)
 		{
-			Vector3 direction = transform.TransformDirection(Vector3.forward);
-			int range = 10;
-			RaycastHit hit;
-			if (Physics.Raycast(transform.position, direction, out hit, range))
+			if(hit.transform.tag == Tags.Player && hit.transform != this.transform)
 			{
-				if(hit.transform.tag == Tags.Player)
-				{
-					//TODO: do dmg
-					hit.transform.GetComponent<Health>().AddSubHealth(-damage);
-				}
+				//Debug.Log("Hitting a player: " + hit.transform.name);
+				hit.transform.GetComponent<Health>().AddSubHealth(-damage);
+				break;
 			}
 		}
 	}
 	public virtual void Reload()
 	{
-		Invoke ("AddAmmo", _reloadTime);
+		if(!_isReloading)
+		{
+			_isReloading = true;
+			Invoke ("AddAmmo", _reloadTime);
+		}
+	}
+	protected virtual void AddAmmo()
+	{
+		ammo = maxAmmo;
+		_isReloading = false;
 	}
 	public float ammo
 	{
@@ -101,6 +120,14 @@ public class Gun : MonoBehaviour, IWeapon {
 		}
 		get {
 			return _damage;
+		}
+	}
+	public float maxAmmo{
+		set{
+			_maxAmmo = value;
+		}
+		get {
+			return _maxAmmo;
 		}
 	}
 }

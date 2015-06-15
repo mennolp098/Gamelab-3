@@ -27,4 +27,13 @@ public class Zombie : PlayerType {
 		}
 		_animator.Play (animationToPlay);
 	}
+
+	//Zombie collision
+	void OnColliderEnter2D(Collider2D other)
+	{
+		if(other.transform.tag == Tags.Player && other.GetComponent<Survivor>())
+		{
+			other.GetComponent<Survivor>().BecomeZombie();
+		}
+	}
 }

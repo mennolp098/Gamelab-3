@@ -191,7 +191,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5812b1297533c204f821cdf11dc196ca, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -214,7 +214,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 459334335}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .0700000003, y: -.479999989, z: 1}
+  m_LocalPosition: {x: .0700000003, y: -.479999989, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -249,7 +249,7 @@ Transform:
   - {fileID: 1712698442}
   - {fileID: 892524495}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
 --- !u!1 &549117060
 GameObject:
   m_ObjectHideFlags: 0
@@ -624,7 +624,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22400176, guid: ccfcb9183b8ca4b4794612751e5d6e6b, type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -125
+      value: -99.9425201
       objectReference: {fileID: 0}
     - target: {fileID: 22400176, guid: ccfcb9183b8ca4b4794612751e5d6e6b, type: 2}
       propertyPath: m_SizeDelta.x
@@ -632,7 +632,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22400176, guid: ccfcb9183b8ca4b4794612751e5d6e6b, type: 2}
       propertyPath: m_SizeDelta.y
-      value: 150
+      value: 99.8850479
       objectReference: {fileID: 0}
     - target: {fileID: 22425120, guid: ccfcb9183b8ca4b4794612751e5d6e6b, type: 2}
       propertyPath: m_AnchorMin.y
@@ -648,7 +648,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22425120, guid: ccfcb9183b8ca4b4794612751e5d6e6b, type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -300
+      value: -224.82756
       objectReference: {fileID: 0}
     - target: {fileID: 22425120, guid: ccfcb9183b8ca4b4794612751e5d6e6b, type: 2}
       propertyPath: m_SizeDelta.x
@@ -656,7 +656,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22425120, guid: ccfcb9183b8ca4b4794612751e5d6e6b, type: 2}
       propertyPath: m_SizeDelta.y
-      value: 150
+      value: 99.8850479
       objectReference: {fileID: 0}
     - target: {fileID: 22476948, guid: ccfcb9183b8ca4b4794612751e5d6e6b, type: 2}
       propertyPath: m_AnchorMin.y
@@ -672,7 +672,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22476948, guid: ccfcb9183b8ca4b4794612751e5d6e6b, type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -475
+      value: -349.712616
       objectReference: {fileID: 0}
     - target: {fileID: 22476948, guid: ccfcb9183b8ca4b4794612751e5d6e6b, type: 2}
       propertyPath: m_SizeDelta.x
@@ -680,7 +680,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22476948, guid: ccfcb9183b8ca4b4794612751e5d6e6b, type: 2}
       propertyPath: m_SizeDelta.y
-      value: 150
+      value: 99.8850479
       objectReference: {fileID: 0}
     - target: {fileID: 180674, guid: ccfcb9183b8ca4b4794612751e5d6e6b, type: 2}
       propertyPath: m_IsActive
@@ -1229,7 +1229,7 @@ Camera:
   near clip plane: .300000012
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
