@@ -11,13 +11,14 @@ public class PlayerType : MonoBehaviour {
 	public const string DEATH_ANIM = "Death";
 	public const string HIT_ANIM = "Hit";
 
-
 	protected string _currentStatus = "Survivor";
 	protected Text _uiStatus;
 	
 	protected Player _player;
 	protected Animator _animator;
 	protected NetworkView _networkView;
+
+	private bool _animationLocked = false;
 
 	// Use this for initialization
 	protected virtual void Start () {
@@ -39,9 +40,18 @@ public class PlayerType : MonoBehaviour {
 	}
 
 
+	private void lockAnim(){
+		_animationLocked = true;
+	}
+	private void unlockAnim(){
+		_animationLocked = false;
+	}
+
 	[RPC]
 	private void PlayAnimation(string animation){
-		_networkView.RPC("PlayAnimationNetwork", RPCMode.All, animation);
+		if (!_animationLocked && _animator.GetCurrentAnimatorStateInfo (0).IsName(animation) == false) {
+			_networkView.RPC ("PlayAnimationNetwork", RPCMode.All, animation);
+		}
 	}
 	
 	[RPC]
