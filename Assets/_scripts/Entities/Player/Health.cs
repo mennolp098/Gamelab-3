@@ -54,7 +54,6 @@ public class Health : MonoBehaviour {
 	private void UpdateHealth(float newHealth)
 	{
 		_currentHealth = newHealth;
-		Debug.Log("UpdatingHealth");
 	}
 
 	public float currentHealth{
