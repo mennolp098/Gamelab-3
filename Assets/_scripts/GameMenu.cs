@@ -26,6 +26,8 @@ public class GameMenu : MonoBehaviour {
 	public Text username;
 	public Text servername;
 	public Text ipadress;
+	public Text maxPlayersText;
+	public Slider playerSlider;
 	//public GUIStyle buttonStyle;
 	//public GUIStyle textStyle;
 
@@ -159,15 +161,21 @@ public class GameMenu : MonoBehaviour {
 	public void StartGame()
 	{
 		_connectionHandler.StartGameClicked();
+		this.gameObject.SetActive(false);
 	}
 	public void StartNewServer()
 	{
 		if(servername.text != "" && _connectionHandler.ip != "")
 		{
 			_connectionHandler.gameName = servername.text;
+			_connectionHandler.maxPlayers = (int)playerSlider.value - 1; // -1 since host is already a player
 			_connectionHandler.StartServer();
 			newServerPanel.SetActive(false);
 		}
+	}
+	public void OnPlayerSliderChange()
+	{
+		maxPlayersText.text = "Max players: " + playerSlider.value;
 	}
 	public void UsernameButtonClicked()
 	{
@@ -192,6 +200,7 @@ public class GameMenu : MonoBehaviour {
 	{
 		mainmenuPanel.SetActive(false);
 		serverlistPanel.SetActive(true);
+		RefreshServerList();
 	}
 	public void BackButtonClicked()
 	{

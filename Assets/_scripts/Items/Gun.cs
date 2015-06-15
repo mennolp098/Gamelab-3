@@ -26,7 +26,7 @@ public class Gun : MonoBehaviour, IWeapon {
 			SendMessage("Shooting");
 
 			float[] shakeParameters = new float[3];
-			float shakeAmount = 2;
+			float shakeAmount = 1;
 			float shakeIntensity = 0.5f;
 			float shakeSpeed = 0.1f;
 

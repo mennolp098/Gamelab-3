@@ -81,5 +81,4 @@ public class PlayerType : MonoBehaviour {
 		_animator.Play(animationToPlay);
 		Debug.Log (animationToPlay);
 	}
-
 }

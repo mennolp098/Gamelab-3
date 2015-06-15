@@ -82,7 +82,6 @@ public class Survivor : PlayerType {
 				animNameToReturn = "Gun" + animNameToReturn;
 			}
 		}
-		
 		return animNameToReturn;
 	}
 	private void Shooting()

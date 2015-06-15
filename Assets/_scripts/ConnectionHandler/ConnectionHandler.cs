@@ -9,7 +9,7 @@ public class ConnectionHandler : MonoBehaviour {
 	private string _gameName = "Server Name";
 	public string remoteIP = "172.17.60.31";
 	private int _remotePort = 25000;
-	private int _maxPlayers = 3;
+	public int maxPlayers = 3;
 	//private int _maxHosts = 10;
 	private NetworkView _networkView;
 	private GameMenu _gameMenu;
@@ -51,13 +51,13 @@ public class ConnectionHandler : MonoBehaviour {
 	}
 	public void StartServer()
 	{
-		Network.InitializeServer(_maxPlayers, _remotePort, !Network.HavePublicAddress());
+		Network.InitializeServer(maxPlayers, _remotePort, !Network.HavePublicAddress());
 		MasterServer.RegisterHost(_typeName, gameName);
 	}
 	[RPC]
 	private void SpawnAllPlayers()
 	{
-		_gameMenu.gameRoomPanel.SetActive(false);
+		_gameMenu.gameObject.SetActive(false);
 		userInterface.SetActive(true);
 		SpawnPlayer();
 		Invoke ("StartGame", 3f);
