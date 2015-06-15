@@ -94,6 +94,40 @@ AnimatorState:
   m_Mirror: 0
   m_Motion: {fileID: 7400000, guid: b71757ee500b10d4086577c4ec56c1d7, type: 2}
   m_Tag: 
+--- !u!1102 &110281772
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Hit
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_Motion: {fileID: 7400000, guid: 3627785b8c4bffe418cc724d52d78f8a, type: 2}
+  m_Tag: 
+--- !u!1102 &110281794
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Death
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_Motion: {fileID: 7400000, guid: bb7eff59b7aae4f4c9ef5ddd1178b825, type: 2}
+  m_Tag: 
 --- !u!1107 &110727088
 AnimatorStateMachine:
   serializedVersion: 5
@@ -111,6 +145,12 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: 110238282}
     m_Position: {x: 480, y: 12, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 110281794}
+    m_Position: {x: 480, y: 120, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 110281772}
+    m_Position: {x: 480, y: 204, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []

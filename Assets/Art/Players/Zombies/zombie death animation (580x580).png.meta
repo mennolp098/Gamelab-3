@@ -1,0 +1,286 @@
+fileFormatVersion: 2
+guid: 90c04fd370fb4cb4a89ff9bfc1605946
+timeCreated: 1434122756
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: zombie death animation (580x580)_0
+    21300002: zombie death animation (580x580)_1
+    21300004: zombie death animation (580x580)_2
+    21300006: zombie death animation (580x580)_3
+    21300008: zombie death animation (580x580)_4
+    21300010: zombie death animation (580x580)_5
+    21300012: zombie death animation (580x580)_6
+    21300014: zombie death animation (580x580)_7
+    21300016: zombie death animation (580x580)_8
+    21300018: zombie death animation (580x580)_9
+    21300020: zombie death animation (580x580)_10
+    21300022: zombie death animation (580x580)_11
+    21300024: zombie death animation (580x580)_12
+    21300026: zombie death animation (580x580)_13
+    21300028: zombie death animation (580x580)_14
+    21300030: zombie death animation (580x580)_15
+    21300032: zombie death animation (580x580)_16
+    21300034: zombie death animation (580x580)_17
+    21300036: zombie death animation (580x580)_18
+    21300038: zombie death animation (580x580)_19
+    21300040: zombie death animation (580x580)_20
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: zombie death animation (580x580)_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3516
+        width: 580
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: zombie death animation (580x580)_1
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 3516
+        width: 580
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: zombie death animation (580x580)_2
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 3516
+        width: 580
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: zombie death animation (580x580)_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2936
+        width: 580
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: zombie death animation (580x580)_4
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 2936
+        width: 580
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: zombie death animation (580x580)_5
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 2936
+        width: 580
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: zombie death animation (580x580)_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2356
+        width: 580
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: zombie death animation (580x580)_7
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 2356
+        width: 580
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: zombie death animation (580x580)_8
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 2356
+        width: 580
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: zombie death animation (580x580)_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1776
+        width: 580
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: zombie death animation (580x580)_10
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 1776
+        width: 580
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: zombie death animation (580x580)_11
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 1776
+        width: 580
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: zombie death animation (580x580)_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1196
+        width: 580
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: zombie death animation (580x580)_13
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 1196
+        width: 580
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: zombie death animation (580x580)_14
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 1196
+        width: 580
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: zombie death animation (580x580)_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 616
+        width: 580
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: zombie death animation (580x580)_16
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 616
+        width: 580
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: zombie death animation (580x580)_17
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 616
+        width: 580
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: zombie death animation (580x580)_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 36
+        width: 580
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: zombie death animation (580x580)_19
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 36
+        width: 580
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: zombie death animation (580x580)_20
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 36
+        width: 580
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -8,6 +8,8 @@ public class PlayerType : MonoBehaviour {
 	public const string WALK_ANIM = "Walk";
 	public const string RUN_ANIM = "Run";
 	public const string ATTACK_ANIM = "Attack";
+	public const string DEATH_ANIM = "Death";
+	public const string HIT_ANIM = "Hit";
 
 
 	protected string _currentStatus = "Survivor";

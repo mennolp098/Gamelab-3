@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Survivor : PlayerType {
 
+	public const string TURN_ZOMBIE_ANIM = "TurnZombie";
+
 	protected override void ChangePlayerStats (){
 		//gameObject.GetComponent<SpriteRenderer> ().sprite = Resources.Load("Sprites/PlayerArt/Survivor") as Sprite;// <---- voor de correcte sprite (oud idee).
 		//TODO De animator moet verandert worden als je in een zombie verandert niet de sprite van de animator..
@@ -19,7 +21,12 @@ public class Survivor : PlayerType {
 		base.ChangePlayerStats ();
 	}
 
-	public void BecomeZombie()
+	//TODO Animatie function die becomeZombie aanroept
+	public void BecomeZombie(){
+		PlayAnimationNetwork (TURN_ZOMBIE_ANIM);
+	}
+
+	private void BecomeZombieCallNetwork()
 	{
 		GetComponent<NetworkView>().RPC("NetworkBecomeZombie",RPCMode.All);
 	}
@@ -64,6 +71,8 @@ public class Survivor : PlayerType {
 		if (GetComponent<Gun> () != null) {
 			animationToPlay = "Gun" + animationToPlay;
 		}
+
+		// if death animation then string is transform into zombie.
 
 		_animator.Play (animationToPlay);
 	}

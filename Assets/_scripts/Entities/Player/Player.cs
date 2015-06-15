@@ -26,12 +26,23 @@ public class Player : MonoBehaviour {
 		_healhComponent = gameObject.AddComponent<Health> ();
 		_movementComponent = gameObject.AddComponent<Movement> ();
 		_networkView.observed = _movementComponent;
+
+		_healhComponent.HealthLostEvent += OnPlayerHit;
+		_healhComponent.NoHealthLeftEvent += OnPlayerDeath;
 	}
 
 	private void PlayerStatsChanged(){
 
 		_healhComponent.SetHealth (healthPoints);
 		_movementComponent.SetMovementStats (walkSpeed,runSpeed,condition,maxStamina);
+	}
+
+	protected virtual void OnPlayerHit(float value){
+		BroadcastMessage ("PlayAnimation", PlayerType.HIT_ANIM);
+	}
+
+	protected virtual void OnPlayerDeath(){
+		BroadcastMessage ("PlayerAnimation", PlayerType.DEATH_ANIM);
 	}
 
 	void Start()
