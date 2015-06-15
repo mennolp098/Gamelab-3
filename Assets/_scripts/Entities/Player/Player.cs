@@ -35,16 +35,14 @@ public class Player : MonoBehaviour {
 		_healhComponent.NoHealthLeftEvent += OnPlayerDeath;
 
 		_particleSystem = GetComponent<ParticleSystem>();
-		_bloodScreen = GameObject.Find("BloodScreen").GetComponent<Image>();
-	
 	}
 
 	void Start()
 	{
 		usernameCanvas.GetComponent<RectTransform>().SetParent(null);
-
 		if(_networkView.isMine)
 		{
+			_bloodScreen = GameObject.Find("BloodScreen").GetComponent<Image>();
 			_myUserInfo = GameObject.FindGameObjectWithTag(Tags.Connector).GetComponent<UserInfo>();
 			_networkView.RPC("ShowMyUsername", RPCMode.All, _myUserInfo.username);
 		}

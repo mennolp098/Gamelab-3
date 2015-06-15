@@ -9,6 +9,7 @@ public class MuzzleFlareBehavior : MonoBehaviour {
 	}
 	void DestroyMe()
 	{
-		Network.Destroy(this.gameObject);
+		if(Network.isServer)
+			Network.Destroy(this.gameObject);
 	}
 }
