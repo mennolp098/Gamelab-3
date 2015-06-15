@@ -54,20 +54,4 @@ public class CameraToAim : MonoBehaviour {
 		float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90;
 	  	transform.rotation = Quaternion.AngleAxis (angle, Vector3.forward);
 	}
-	private void Shooting()
-	{
-		StartCoroutine("ShakeCamera");
-	}
-	private IEnumerator ShakeCamera()
-	{
-		int shakeAmount = 2;
-		for (int i = 0; i < shakeAmount; i++) 
-		{
-			Vector3 camPos = _camera.transform.position;
-			camPos.x += Random.Range(-0.5f,0.5f);
-			camPos.y += Random.Range(-0.5f,0.5f);
-			_camera.transform.position = camPos;
-			yield return new WaitForSeconds(0.01f);
-		}
-	}
 }
