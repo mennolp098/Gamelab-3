@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour {
 
 	public string usernameText;
+	public Text usernameDisplayText;
 	private UserInfo _myUserInfo;
 
 	// Player stats
@@ -18,7 +19,9 @@ public class Player : MonoBehaviour {
 	protected NetworkView _networkView;
 	protected Health _healhComponent;
 	protected Movement _movementComponent;
-	
+
+	private Image _bloodScreen;
+	private ParticleSystem _particleSystem;
 	// Use this for initialization
 	protected virtual void Awake()
 	{
@@ -29,6 +32,22 @@ public class Player : MonoBehaviour {
 
 		_healhComponent.HealthLostEvent += OnPlayerHit;
 		_healhComponent.NoHealthLeftEvent += OnPlayerDeath;
+
+		_particleSystem = GetComponent<ParticleSystem>();
+		_bloodScreen = GameObject.Find("BloodScreen").GetComponent<Image>();
+	}
+
+	void Start()
+	{
+		if(_networkView.isMine)
+		{
+			_myUserInfo = GameObject.FindGameObjectWithTag(Tags.Connector).GetComponent<UserInfo>();
+			_networkView.RPC("ShowMyUsername", RPCMode.All, _myUserInfo.username);
+		}
+	}
+
+	void Update()
+	{
 	}
 
 	private void PlayerStatsChanged(){
@@ -38,30 +57,80 @@ public class Player : MonoBehaviour {
 	}
 
 	protected virtual void OnPlayerHit(float value){
-		BroadcastMessage ("PlayAnimation", PlayerType.HIT_ANIM);
+		//BroadcastMessage ("PlayAnimation", PlayerType.HIT_ANIM);
+		_networkView.RPC("BloodSplatter", RPCMode.All);
+
+		SeeBlood();
+
+		float[] shakeParameters = new float[3];
+		float shakeAmount = 2;
+		float shakeIntensity = 0.5f;
+		float shakeSpeed = 0.1f;
+		
+		shakeParameters[0] = shakeAmount;
+		shakeParameters[1] = shakeIntensity;
+		shakeParameters[2] = shakeSpeed;
+		
+		SendMessage("Shake", shakeParameters);
+	}
+	[RPC]
+	private void BloodSplatter()
+	{
+		_particleSystem.Play();
 	}
 
+	private void SeeBlood()
+	{
+		Color newColor = _bloodScreen.color;
+		newColor.a = 0.5f;
+		_bloodScreen.color = newColor;
+		Invoke("RemoveBlood", 0.1f);
+	}
+	private void RemoveBlood()
+	{
+		Color newColor = _bloodScreen.color;
+		newColor.a = 0;
+		_bloodScreen.color = newColor;
+	}
 	protected virtual void OnPlayerDeath(){
 		BroadcastMessage ("PlayAnimation", PlayerType.DEATH_ANIM);
 	}
-
-	void Start()
-	{
-		if(_networkView.isMine)
-		{
-
-			_myUserInfo = GameObject.FindGameObjectWithTag(Tags.Connector).GetComponent<UserInfo>();
-			_networkView.RPC("ShowMyUsername", RPCMode.All, _myUserInfo.username);
-			Debug.Log(_networkView.viewID);
-		}
-	}
-
+	
 	// Network functions
-
 	[RPC]
 	private void ShowMyUsername(string username)
 	{
 		usernameText = username;
 		this.name = username;
+		usernameDisplayText.text = username;
+		Color newColor = usernameDisplayText.color;
+		newColor.a = 0;
+		usernameDisplayText.color = newColor;
+	}
+
+	//mouse fuctions for username
+	private void OnMouseOver()
+	{
+		if(_networkView.isMine)
+		{
+			Color newColor = usernameDisplayText.color;
+			if(newColor.a != 1f)
+			{
+				newColor.a += 0.05f;
+			}
+			usernameDisplayText.color = newColor;
+		}
+	}
+	private void OnMouseExit()
+	{
+		if(_networkView.isMine)
+		{
+			Color newColor = usernameDisplayText.color;
+			if(newColor.a != 0f)
+			{
+				newColor.a = 0f;
+			}
+			usernameDisplayText.color = newColor;
+		}
 	}
 }

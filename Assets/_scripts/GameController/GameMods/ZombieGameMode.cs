@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ZombieGamemMode : GameMode {
+public class ZombieGameMode : GameMode {
 	public GameObject[] gunSpawnPoints = new GameObject[0];
 	public GameObject gunPrefab;
 

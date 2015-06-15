@@ -87,7 +87,7 @@ public class Survivor : PlayerType {
 		}
 
 		// if death animation then string is transform into zombie.
-
+		Debug.Log(animationToPlay);
 		_animator.Play (animationToPlay);
 	}
 	private void Shooting()

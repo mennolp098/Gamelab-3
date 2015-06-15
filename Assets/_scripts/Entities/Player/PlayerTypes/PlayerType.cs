@@ -58,5 +58,4 @@ public class PlayerType : MonoBehaviour {
 	protected virtual void PlayAnimationNetwork(string animation){
 		
 	}
-
 }
