@@ -21,16 +21,27 @@ public class Health : MonoBehaviour {
 	}
 
 	public void SetHealth(float amountMaxHealth,float currentHealth = float.NaN){
+
+		_networkView.RPC("UpdateSetHealth", RPCMode.All, amountMaxHealth, currentHealth);
+	}
+
+	public void AddSubHealth(float amount){
+
+		_networkView.RPC("UpdateAddSubHealth", RPCMode.All, amount);
+	}
+	[RPC]
+	private void UpdateSetHealth(float amountMaxHealth,float currentHealth = float.NaN)
+	{
 		_maxHealth = amountMaxHealth;
 		if (float.IsNaN (currentHealth)) {
 			_currentHealth = amountMaxHealth;
 		} else {
 			_currentHealth = currentHealth;
 		}
-		_networkView.RPC("UpdateHealth", RPCMode.Others, _currentHealth);
 	}
-
-	public void AddSubHealth(float amount){
+	[RPC]
+	private void UpdateAddSubHealth(float amount)
+	{
 		_currentHealth += amount;
 		if (amount > 0) {
 			if(HealthAddedEvent != null){
@@ -47,13 +58,6 @@ public class Health : MonoBehaviour {
 				}
 			}
 		}
-		_networkView.RPC("UpdateHealth", RPCMode.Others, _currentHealth);
-	}
-
-	[RPC]
-	private void UpdateHealth(float newHealth)
-	{
-		_currentHealth = newHealth;
 	}
 
 	public float currentHealth{
