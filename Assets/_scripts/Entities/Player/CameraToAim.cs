@@ -7,7 +7,7 @@ public class CameraToAim : MonoBehaviour {
 	private GameObject _camera;
 	private float _lookSpeed = 1.2f;
 	//private float _minDistanceToActivate = 1f;
-	private float _maxLookDistance = 1f;
+	private float _maxLookDistance = 2f;
 	private Vector3 _focusPoint;
 
 	void Awake(){
