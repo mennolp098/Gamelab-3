@@ -15,18 +15,6 @@ public class Zombie : PlayerType {
 
 		base.ChangePlayerStats ();
 	}
-	[RPC]
-	protected override void PlayAnimationNetwork (string animation)
-	{
-		base.PlayAnimationNetwork (animation);
-		_animator.speed = 1;
-		string animationToPlay = animation;
-		if (animationToPlay == PlayerType.RUN_ANIM) {
-			_animator.speed = 2;
-			animationToPlay = PlayerType.WALK_ANIM;
-		}
-		_animator.Play (animationToPlay);
-	}
 
 	//Zombie collision
 	void OnColliderEnter2D(Collider2D other)

@@ -40,23 +40,44 @@ public class PlayerType : MonoBehaviour {
 	}
 
 
-	private void lockAnim(){
+	protected void lockAnim(){
 		_animationLocked = true;
 	}
-	private void unlockAnim(){
+	protected void unlockAnim(){
 		_animationLocked = false;
 	}
 
-	[RPC]
+	public bool GetAnimLockStage(){
+		return _animationLocked;
+	}
+
 	private void PlayAnimation(string animation){
-		if (!_animationLocked && _animator.GetCurrentAnimatorStateInfo (0).IsName(animation) == false) {
-			_networkView.RPC ("PlayAnimationNetwork", RPCMode.All, animation);
+		if (!_animationLocked && _animator.GetCurrentAnimatorStateInfo (0).IsName(ConvertAnimationName(animation)) == false) {
+			_networkView.RPC ("PlayAnimationNetwork", RPCMode.All, ConvertAnimationName(animation,true));
 		}
 	}
-	
+
+	public virtual string ConvertAnimationName(string animName, bool trueName = false){
+		string animNameToReturn = animName;
+
+		if (animNameToReturn == RUN_ANIM && !trueName) {
+			animNameToReturn = WALK_ANIM;
+		}
+
+		return animNameToReturn;
+	}
+
 	[RPC]
 	protected virtual void PlayAnimationNetwork(string animation){
-		
+
+		_animator.speed = 1;
+		string animationToPlay = animation;
+
+		if (animationToPlay == PlayerType.RUN_ANIM) {
+			_animator.speed = 2;
+			animationToPlay = PlayerType.WALK_ANIM;
+		}
+		_animator.Play(animationToPlay);
 	}
 
 }
