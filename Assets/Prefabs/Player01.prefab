@@ -70,13 +70,9 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: .511520386, y: .838607788, z: -1}
   m_LocalScale: {x: .5, y: .5, z: 1}
-<<<<<<< HEAD
-  m_Children: []
-=======
   m_Children:
   - {fileID: 408028}
   - {fileID: 22426454}
->>>>>>> 86decae0098681871f8c2bc75bdb4a9cd7ebef69
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!50 &5099174
@@ -124,8 +120,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-<<<<<<< HEAD
-=======
 --- !u!95 &9560182
 Animator:
   serializedVersion: 3
@@ -175,7 +169,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
->>>>>>> 86decae0098681871f8c2bc75bdb4a9cd7ebef69
 --- !u!114 &11413780
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1397,8 +1390,6 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 25fb0ed9b2f9d404a831d52d78390d1f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-<<<<<<< HEAD
-=======
 --- !u!212 &21241926
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -1483,7 +1474,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: .5, y: .5}
->>>>>>> 86decae0098681871f8c2bc75bdb4a9cd7ebef69
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
