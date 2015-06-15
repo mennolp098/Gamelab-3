@@ -161,6 +161,7 @@ public class GameMenu : MonoBehaviour {
 	public void StartGame()
 	{
 		_connectionHandler.StartGameClicked();
+		this.gameObject.SetActive(false);
 	}
 	public void StartNewServer()
 	{

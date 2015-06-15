@@ -57,7 +57,7 @@ public class ConnectionHandler : MonoBehaviour {
 	[RPC]
 	private void SpawnAllPlayers()
 	{
-		_gameMenu.gameRoomPanel.SetActive(false);
+		_gameMenu.gameObject.SetActive(false);
 		userInterface.SetActive(true);
 		SpawnPlayer();
 		Invoke ("StartGame", 3f);

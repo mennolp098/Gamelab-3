@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour {
 
 	public string usernameText;
+	public GameObject usernameCanvas;
 	public Text usernameDisplayText;
 	private UserInfo _myUserInfo;
 
@@ -35,21 +36,23 @@ public class Player : MonoBehaviour {
 
 		_particleSystem = GetComponent<ParticleSystem>();
 		_bloodScreen = GameObject.Find("BloodScreen").GetComponent<Image>();
+	
 	}
 
 	void Start()
 	{
+		usernameCanvas.GetComponent<RectTransform>().SetParent(null);
+
 		if(_networkView.isMine)
 		{
 			_myUserInfo = GameObject.FindGameObjectWithTag(Tags.Connector).GetComponent<UserInfo>();
 			_networkView.RPC("ShowMyUsername", RPCMode.All, _myUserInfo.username);
 		}
 	}
-
 	void Update()
 	{
+		usernameCanvas.GetComponent<RectTransform>().position = this.transform.position + new Vector3(0,1.5f,0);
 	}
-
 	private void PlayerStatsChanged(){
 
 		_healhComponent.SetHealth (healthPoints);
@@ -111,26 +114,20 @@ public class Player : MonoBehaviour {
 	//mouse fuctions for username
 	private void OnMouseOver()
 	{
-		if(_networkView.isMine)
+		Color newColor = usernameDisplayText.color;
+		if(newColor.a != 1f)
 		{
-			Color newColor = usernameDisplayText.color;
-			if(newColor.a != 1f)
-			{
-				newColor.a += 0.05f;
-			}
-			usernameDisplayText.color = newColor;
+			newColor.a += 0.05f;
 		}
+		usernameDisplayText.color = newColor;
 	}
 	private void OnMouseExit()
 	{
-		if(_networkView.isMine)
+		Color newColor = usernameDisplayText.color;
+		if(newColor.a != 0f)
 		{
-			Color newColor = usernameDisplayText.color;
-			if(newColor.a != 0f)
-			{
-				newColor.a = 0f;
-			}
-			usernameDisplayText.color = newColor;
+			newColor.a = 0f;
 		}
+		usernameDisplayText.color = newColor;
 	}
 }

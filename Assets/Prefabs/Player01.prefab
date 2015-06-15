@@ -1,15 +1,33 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &158780
+--- !u!1 &105180
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 22426454}
+  - 223: {fileID: 22355216}
+  - 114: {fileID: 11411584}
+  - 114: {fileID: 11478366}
+  m_Layer: 5
+  m_Name: UsernameCanvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &119856
 GameObject:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 224: {fileID: 22413756}
-  - 222: {fileID: 22229222}
-  - 114: {fileID: 11473128}
+  - 224: {fileID: 22489262}
+  - 222: {fileID: 22254156}
+  - 114: {fileID: 11479324}
   m_Layer: 5
   m_Name: Username
   m_TagString: Untagged
@@ -61,24 +79,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &193826
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 224: {fileID: 22403692}
-  - 223: {fileID: 22309432}
-  - 114: {fileID: 11430578}
-  - 114: {fileID: 11481022}
-  m_Layer: 5
-  m_Name: UsernameCanvas
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!4 &408028
 Transform:
   m_ObjectHideFlags: 1
@@ -102,7 +102,7 @@ Transform:
   m_LocalScale: {x: .5, y: .5, z: 1}
   m_Children:
   - {fileID: 408028}
-  - {fileID: 22403692}
+  - {fileID: 22426454}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!50 &5099174
@@ -178,23 +178,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f740ead7a341594191de70b1941f964, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11413780
+--- !u!114 &11411584
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 159602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f585b223ed7e7f4eb7f7a4c34502dd3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &11430578
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 193826}
+  m_GameObject: {fileID: 105180}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1980459831, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
@@ -210,6 +199,17 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &11413780
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f585b223ed7e7f4eb7f7a4c34502dd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11446922
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -232,12 +232,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7106a6065d36184aa539f4e85ac740f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11473128
+--- !u!114 &11473362
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 158780}
+  m_GameObject: {fileID: 159602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 908d13be62e317c4b8edcf0b5dc19210, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  usernameText: Ramses
+  usernameCanvas: {fileID: 105180}
+  usernameDisplayText: {fileID: 11479324}
+  healthPoints: 0
+  walkSpeed: 0
+  runSpeed: 0
+  condition: 0
+  maxStamina: 0
+--- !u!114 &11478366
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 105180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &11479324
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 119856}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
@@ -258,40 +293,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Username
---- !u!114 &11473362
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 159602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 908d13be62e317c4b8edcf0b5dc19210, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  usernameText: Ramses
-  usernameDisplay: {fileID: 0}
-  healthPoints: 0
-  walkSpeed: 0
-  runSpeed: 0
-  condition: 0
-  maxStamina: 0
---- !u!114 &11481022
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 193826}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!148 &14844342
 NetworkView:
   m_ObjectHideFlags: 1
@@ -316,7 +317,7 @@ ParticleSystem:
   randomSeed: 0
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   moveWithTransform: 1
   InitialModule:
     enabled: 1
@@ -1445,18 +1446,18 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: bccc42a5af1b3ef408c82d47d01ef2e3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
---- !u!222 &22229222
+--- !u!222 &22254156
 CanvasRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 158780}
---- !u!223 &22309432
+  m_GameObject: {fileID: 119856}
+--- !u!223 &22355216
 Canvas:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 193826}
+  m_GameObject: {fileID: 105180}
   m_Enabled: 1
   serializedVersion: 2
   m_RenderMode: 2
@@ -1468,35 +1469,35 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingLayerID: 0
   m_SortingOrder: 1
---- !u!224 &22403692
+--- !u!224 &22426454
 RectTransform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 193826}
+  m_GameObject: {fileID: 105180}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: .0500000007, y: .0500000007, z: 1}
   m_Children:
-  - {fileID: 22413756}
+  - {fileID: 22489262}
   m_Father: {fileID: 410770}
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: .129984736, y: 2.5}
+  m_AnchoredPosition: {x: 34.9595718, y: -29.5885925}
   m_SizeDelta: {x: 600, y: 800}
   m_Pivot: {x: .5, y: .5}
---- !u!224 &22413756
+--- !u!224 &22489262
 RectTransform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 158780}
+  m_GameObject: {fileID: 119856}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 22403692}
+  m_Father: {fileID: 22426454}
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
