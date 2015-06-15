@@ -46,6 +46,7 @@ public class Movement : MoveableNetworkEntity {
 		else if(Input.GetKeyUp(KeyCode.LeftShift))
 		{
 			StopRunning();
+			BroadcastMessage("PlayAnimation",PlayerType.IDLE_ANIM);
 		} 
 		if (_speed != _runSpeed) {
 			RegenStamina (); //als hij niet aan het rennen is dan regenStamina
