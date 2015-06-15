@@ -63,7 +63,7 @@ public class Gun : MonoBehaviour, IWeapon {
 		{
 			if(hit.transform.tag == Tags.Player && hit.transform != this.transform)
 			{
-				//Debug.Log("Hitting a player: " + hit.transform.name);
+				Debug.Log("Hitting a player: " + hit.transform.name);
 				hit.transform.GetComponent<Health>().AddSubHealth(-damage);
 				break;
 			}

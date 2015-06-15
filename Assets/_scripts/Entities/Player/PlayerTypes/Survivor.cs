@@ -25,6 +25,7 @@ public class Survivor : PlayerType {
 	//TODO Animatie function die becomeZombie aanroept
 	public void BecomeZombie(){
 		BroadcastMessage ("PlayAnimation",TURN_ZOMBIE_ANIM);
+		lockAnim ();
 	}
 
 	private void Update()
@@ -46,8 +47,8 @@ public class Survivor : PlayerType {
 	}
 	public void BecomeZombieCallNetwork()
 	{
-		BroadcastMessage ("PlayAnimation", TURN_ZOMBIE_ANIM);
-		lockAnim ();
+		_networkView.RPC ("NetworkBecomeZombie", RPCMode.All);
+		
 	}
 	[RPC]
 	private void NetworkBecomeZombie()
@@ -77,12 +78,15 @@ public class Survivor : PlayerType {
 		string animNameToReturn = base.ConvertAnimationName (animName, trueName);
 		
 		if (GetComponent<Gun> () != null) {
-			animNameToReturn = "Gun" + animNameToReturn;
+			if(animName != TURN_ZOMBIE_ANIM){
+				animNameToReturn = "Gun" + animNameToReturn;
+			}
 		}
 		return animNameToReturn;
 	}
 	private void Shooting()
 	{
 		BroadcastMessage("PlayAnimation", ATTACK_ANIM);
+		lockAnim ();
 	}
 }
