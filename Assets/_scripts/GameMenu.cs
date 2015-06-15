@@ -135,7 +135,7 @@ public class GameMenu : MonoBehaviour {
 				GameObject newServerBut = Instantiate(serverButton, new Vector3(0,0,0),Quaternion.identity) as GameObject;
 				newServerBut.transform.SetParent(serverlistPanel.transform);
 				newServerBut.GetComponent<ServerButton>().SetServer(_connectionHandler.hostList[i]);
-				newServerBut.GetComponent<ServerButton>().SetPosition(new Vector3(250,-140 + i * -40,0));
+				newServerBut.GetComponent<ServerButton>().SetPosition(new Vector3(250,-190 + i * -40,0));
 				allServers.Add(newServerBut);
 			}
 		}

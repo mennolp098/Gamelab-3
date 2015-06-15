@@ -25,14 +25,17 @@ public class Zombie : PlayerType {
 	}
 	private void AttackInput()
 	{
-		if(Input.GetMouseButton(0))
+		if(Input.GetMouseButton(0) && !_animator.GetCurrentAnimatorStateInfo(0).IsName(ATTACK_ANIM))
 		{
 			Attack ();
+		}
+		if(_animator.GetCurrentAnimatorStateInfo(0).IsName(ATTACK_ANIM))
+		{
+			_networkView.RPC("CreateCollision", RPCMode.Server);
 		}
 	}
 	private void Attack()
 	{
-		_networkView.RPC("CreateCollision", RPCMode.Server);
 		BroadcastMessage("PlayAnimation", ATTACK_ANIM);
 	}
 	[RPC]
