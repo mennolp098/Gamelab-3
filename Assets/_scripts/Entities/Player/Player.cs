@@ -42,7 +42,7 @@ public class Player : MonoBehaviour {
 	}
 
 	protected virtual void OnPlayerDeath(){
-		BroadcastMessage ("PlayerAnimation", PlayerType.DEATH_ANIM);
+		BroadcastMessage ("PlayAnimation", PlayerType.DEATH_ANIM);
 	}
 
 	void Start()

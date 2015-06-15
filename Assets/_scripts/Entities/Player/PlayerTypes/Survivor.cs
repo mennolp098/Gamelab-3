@@ -46,7 +46,7 @@ public class Survivor : PlayerType {
 	}
 	public void BecomeZombieCallNetwork()
 	{
-		GetComponent<NetworkView>().RPC("NetworkBecomeZombie",RPCMode.All);
+		BroadcastMessage ("PlayAnimation", TURN_ZOMBIE_ANIM);
 	}
 	[RPC]
 	private void NetworkBecomeZombie()
@@ -92,6 +92,6 @@ public class Survivor : PlayerType {
 	}
 	private void Shooting()
 	{
-		_networkView.RPC("PlayAnimationNetwork", RPCMode.All, "Shoot");
+		BroadcastMessage("PlayAnimation", ATTACK_ANIM);
 	}
 }
