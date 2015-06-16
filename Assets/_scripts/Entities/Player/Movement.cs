@@ -35,7 +35,7 @@ public class Movement : MoveableNetworkEntity {
 		_rigidBody.velocity = new Vector3(horizontalAxis,verticalAxis,0) * _speed;
 		if (_rigidBody.velocity.magnitude > 0.5f) {
 			BroadcastMessage ("PlayAnimation",PlayerType.WALK_ANIM);
-		} else {
+		}else{
 			BroadcastMessage("PlayAnimation",PlayerType.IDLE_ANIM);
 		}
 		//Check running

@@ -6,6 +6,9 @@ public class Survivor : PlayerType {
 
 	public const string TURN_ZOMBIE_ANIM = "TurnZombie";
 
+	public delegate void NoInfoDelegate();
+	public event NoInfoDelegate SurvivorBecameZombieEvent;
+
 	protected override void ChangePlayerStats (){
 		//gameObject.GetComponent<SpriteRenderer> ().sprite = Resources.Load("Sprites/PlayerArt/Survivor") as Sprite;// <---- voor de correcte sprite (oud idee).
 		//TODO De animator moet verandert worden als je in een zombie verandert niet de sprite van de animator..
@@ -54,6 +57,9 @@ public class Survivor : PlayerType {
 	private void NetworkBecomeZombie()
 	{
 		gameObject.AddComponent<Zombie> (); //<-- check met de component niet met de tag. Tag is en blijft "Player" voor het systeem
+		if (SurvivorBecameZombieEvent != null) {
+			SurvivorBecameZombieEvent();
+		}
 		Destroy (this);
 	}
 
