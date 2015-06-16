@@ -4,6 +4,11 @@ using System.Collections;
 public class ZombieGameMode : GameMode {
 	public GameObject[] gunSpawnPoints = new GameObject[0];
 	public GameObject gunPrefab;
+	protected override void Start()
+	{
+		base.Start();
+		_gameModeName = "Survival";
+	}
 
 	public override void StartGameMode ()
 	{

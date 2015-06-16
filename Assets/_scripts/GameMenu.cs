@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class GameMenu : MonoBehaviour {
 	private ConnectionHandler _connectionHandler;
 	private UserInfo _myUserInfo;
+	private string[] _gameModes = new string[2];
+	private int _gameModeCounter = 0;
 	//private GameObject[] allRooms = new GameObject[10];
 
 	public GameObject usernamePanel;
@@ -27,6 +29,7 @@ public class GameMenu : MonoBehaviour {
 	public Text servername;
 	public Text ipadress;
 	public Text maxPlayersText;
+	public Text gameModeText;
 	public Slider playerSlider;
 	//public GUIStyle buttonStyle;
 	//public GUIStyle textStyle;
@@ -36,6 +39,9 @@ public class GameMenu : MonoBehaviour {
 		GameObject connector = GameObject.FindGameObjectWithTag(Tags.Connector);
 		_myUserInfo = connector.GetComponent<UserInfo>();
 		_connectionHandler = connector.GetComponent<ConnectionHandler>();
+
+		_gameModes[0] = "Survival";
+		_gameModes[1] = "HideAndSeek";
 	}
 	/*
 	void OnGUI()
@@ -167,9 +173,9 @@ public class GameMenu : MonoBehaviour {
 	{
 		if(servername.text != "" && _connectionHandler.ip != "")
 		{
-			_connectionHandler.gameName = servername.text;
+			_connectionHandler.gameName = (string)servername.text + " - " + _gameModes[_gameModeCounter];
 			_connectionHandler.maxPlayers = (int)playerSlider.value - 1; // -1 since host is already a player
-			_connectionHandler.StartServer();
+			_connectionHandler.StartServer(_gameModes[_gameModeCounter]);
 			newServerPanel.SetActive(false);
 		}
 	}
@@ -223,5 +229,15 @@ public class GameMenu : MonoBehaviour {
 	public void CreditsButtonClicked()
 	{
 		//TODO: credits panel
+	}
+	public void NextGameMode()
+	{
+		_gameModeCounter++;
+		gameModeText.text = _gameModes[_gameModeCounter];
+	}
+	public void BackGameMode()
+	{
+		_gameModeCounter--;
+		gameModeText.text = _gameModes[_gameModeCounter];
 	}
 }
