@@ -4,6 +4,11 @@ using System.Collections;
 public class ZombieGameMode : GameMode {
 	public GameObject[] gunSpawnPoints = new GameObject[0];
 	public GameObject gunPrefab;
+	protected override void Start()
+	{
+		base.Start();
+		_gameModeName = "Survival";
+	}
 
 	public override void StartGameMode ()
 	{
@@ -11,6 +16,10 @@ public class ZombieGameMode : GameMode {
 		if(Network.isServer)
 		{
 			_allPlayers[(int)Random.Range(0,_allPlayers.Count)].GetComponent<Survivor>().BecomeZombie();
+			foreach(GameObject player in _allPlayers)
+			{
+				player.GetComponent<Health>().NoHealthLeftEvent += CheckPlayers;
+			}
 		}
 	}
 	protected override void EndTimer ()
@@ -24,6 +33,25 @@ public class ZombieGameMode : GameMode {
 		for (int i = 0; i < gunSpawnPoints.Length; i++) 
 		{
 			Network.Instantiate(gunPrefab,gunSpawnPoints[i].transform.position,Quaternion.identity, 1);
+		}
+	}
+	private void CheckPlayers (GameObject playerDied)
+	{
+		if(playerDied.GetComponent<Survivor>())
+		{
+			_allSurvivors.Remove(playerDied);
+			if(_allSurvivors.Count == 0)
+			{
+				ZombiesWon();
+			}
+		} 
+		else if(playerDied.GetComponent<Zombie>())
+		{
+			_allZombies.Remove(playerDied);
+			if(_allZombies.Count == 0)
+			{
+				SurvivorsWon();
+			}
 		}
 	}
 }

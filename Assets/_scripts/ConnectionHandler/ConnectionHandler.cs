@@ -49,10 +49,11 @@ public class ConnectionHandler : MonoBehaviour {
 		Network.natFacilitatorPort = 50005;
 		MasterServer.RequestHostList(_typeName);
 	}
-	public void StartServer()
+	public void StartServer(string gameMode)
 	{
 		Network.InitializeServer(maxPlayers, _remotePort, !Network.HavePublicAddress());
 		MasterServer.RegisterHost(_typeName, gameName);
+		_networkView.RPC("SetGameMode", RPCMode.All, gameMode);
 	}
 	[RPC]
 	private void SpawnAllPlayers()
@@ -62,6 +63,20 @@ public class ConnectionHandler : MonoBehaviour {
 		SpawnPlayer();
 		Invoke ("StartGame", 3f);
 	}
+	[RPC]
+	private void SetGameMode(string gameMode)
+	{
+		GameObject gameController = GameObject.FindGameObjectWithTag(Tags.GameController);
+		if(gameMode == "Survival")
+		{
+			gameController.AddComponent<ZombieGameMode>();
+		} 
+		else if(gameMode == "Hide And Seek")
+		{
+			gameController.AddComponent<HideAndSeekGameMode>();
+		}
+	}
+
 	private void StartGame()
 	{
 		GameObject.FindGameObjectWithTag(Tags.GameController).GetComponent<GameController>().StartGame();
