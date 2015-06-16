@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 431152}
   - 212: {fileID: 21256810}
   - 61: {fileID: 6186564}
+  - 148: {fileID: 14847090}
   m_Layer: 0
   m_Name: gunPrefab
   m_TagString: Gun
@@ -42,6 +43,18 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: .25, y: .25}
+--- !u!148 &14847090
+NetworkView:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 190070}
+  m_Enabled: 1
+  m_StateSynchronization: 1
+  m_Observed: {fileID: 431152}
+  m_ViewID:
+    m_ID: 0
+    m_Type: 0
 --- !u!212 &21256810
 SpriteRenderer:
   m_ObjectHideFlags: 1

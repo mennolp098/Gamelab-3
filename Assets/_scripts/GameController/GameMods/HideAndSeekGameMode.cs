@@ -7,6 +7,14 @@ public class HideAndSeekGameMode : GameMode {
 		base.Start();
 		_gameModeName = "Hide And Seek";
 	}
+	public override void StartGameMode ()
+	{
+		base.StartGameMode ();
+		if(Network.isServer)
+		{
+			_allPlayers[(int)Random.Range(0,_allPlayers.Count)].GetComponent<Survivor>().BecomeZombie();
+		}
+	}
 	protected override void EndTimer ()
 	{
 		base.EndTimer ();

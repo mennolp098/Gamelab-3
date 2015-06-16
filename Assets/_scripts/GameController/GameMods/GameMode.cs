@@ -50,6 +50,8 @@ public class GameMode : MonoBehaviour {
 		foreach(GameObject player in players)
 		{
 			_allPlayers.Add(player);
+			_allSurvivors.Add(player);
+			player.GetComponent<Survivor>().SurvivorBecameZombieEvent += BecameZombie;
 		}
 		_timer.GetComponent<Timer> ().StartTimer ();
 	}
@@ -58,6 +60,16 @@ public class GameMode : MonoBehaviour {
 	{
 		_allSurvivors.Remove(player);
 		_allZombies.Add(player);
+
+		if(Network.isServer)
+			CheckZombieWin();
+	}
+	protected virtual void CheckZombieWin()
+	{
+		if(_allSurvivors.Count == 0)
+		{
+			ZombiesWon();
+		}
 	}
 	protected virtual void ZombiesWon()
 	{

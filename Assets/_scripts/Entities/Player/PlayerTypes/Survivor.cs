@@ -6,8 +6,8 @@ public class Survivor : PlayerType {
 
 	public const string TURN_ZOMBIE_ANIM = "TurnZombie";
 
-	public delegate void NoInfoDelegate();
-	public event NoInfoDelegate SurvivorBecameZombieEvent;
+	public delegate void GameObjectInfoDelegate(GameObject info);
+	public event GameObjectInfoDelegate SurvivorBecameZombieEvent;
 
 	protected override void ChangePlayerStats (){
 		//gameObject.GetComponent<SpriteRenderer> ().sprite = Resources.Load("Sprites/PlayerArt/Survivor") as Sprite;// <---- voor de correcte sprite (oud idee).
@@ -40,8 +40,9 @@ public class Survivor : PlayerType {
 				if(_gunComponent == null && GetComponent<Gun>())
 				{
 					_gunComponent = GetComponent<Gun>();
+					_gunComponent.PullTrigger();
 				}
-				if(_gunComponent != null)
+				else if(_gunComponent != null)
 				{
 					_gunComponent.PullTrigger();
 				}
@@ -50,15 +51,17 @@ public class Survivor : PlayerType {
 	}
 	public void BecomeZombieCallNetwork()
 	{
-		_networkView.RPC ("NetworkBecomeZombie", RPCMode.All);
-		
+		if(_networkView.isMine)
+		{
+			_networkView.RPC ("NetworkBecomeZombie", RPCMode.All);
+		}
 	}
 	[RPC]
 	private void NetworkBecomeZombie()
 	{
 		gameObject.AddComponent<Zombie> (); //<-- check met de component niet met de tag. Tag is en blijft "Player" voor het systeem
 		if (SurvivorBecameZombieEvent != null) {
-			SurvivorBecameZombieEvent();
+			SurvivorBecameZombieEvent(this.gameObject);
 		}
 		Destroy (this);
 	}
@@ -77,6 +80,8 @@ public class Survivor : PlayerType {
 		if(other.transform.tag == Tags.Gun)
 		{
 			_networkView.RPC("PickupGun", RPCMode.All);
+			if(Network.isServer)
+				Network.Destroy(other.gameObject);
 		}
 	}
 	public override string ConvertAnimationName (string animName, bool trueName)
