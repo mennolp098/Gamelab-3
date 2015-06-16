@@ -2,12 +2,16 @@
 using System.Collections;
 
 public class ZombieGameMode : GameMode {
-	public GameObject[] gunSpawnPoints = new GameObject[0];
-	public GameObject gunPrefab;
+	private GameObject[] gunSpawnPoints = new GameObject[4]; //Change length if there are more spawnpoints!!
+	private GameObject gunPrefab;
 	protected override void Start()
 	{
 		base.Start();
 		_gameModeName = "Survival";
+		gunPrefab = Resources.Load("Prefabs/gunPrefab", typeof(GameObject)) as GameObject;
+		for (int i = 0; i < gunSpawnPoints.Length; i++) {
+			gunSpawnPoints[i] = GameObject.Find("GunSpawnPoint" + i);
+		}
 	}
 
 	public override void StartGameMode ()

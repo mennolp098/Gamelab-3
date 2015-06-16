@@ -740,11 +740,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22438498, guid: ccfcb9183b8ca4b4794612751e5d6e6b, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22447200, guid: ccfcb9183b8ca4b4794612751e5d6e6b, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ccfcb9183b8ca4b4794612751e5d6e6b, type: 2}
@@ -1009,7 +1009,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 2118675682}
   - 114: {fileID: 2118675681}
-  - 114: {fileID: 2118675680}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -1017,23 +1016,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2118675680
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2118675679}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db7803630c0206944b402efdfa2d8293, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gunSpawnPoints:
-  - {fileID: 892524494}
-  - {fileID: 1712698441}
-  - {fileID: 690619068}
-  - {fileID: 1649822764}
-  gunPrefab: {fileID: 190070, guid: 7277b23d39503dd4a957bba983ee44f0, type: 2}
 --- !u!114 &2118675681
 MonoBehaviour:
   m_ObjectHideFlags: 0

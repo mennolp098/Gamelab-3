@@ -27,7 +27,6 @@ public class GameMenu : MonoBehaviour {
 	public GameObject serverButton;
 	public Text username;
 	public Text servername;
-	public Text ipadress;
 	public Text maxPlayersText;
 	public Text gameModeText;
 	public Slider playerSlider;
@@ -40,8 +39,8 @@ public class GameMenu : MonoBehaviour {
 		_myUserInfo = connector.GetComponent<UserInfo>();
 		_connectionHandler = connector.GetComponent<ConnectionHandler>();
 
-		_gameModes[0] = "Survival";
-		_gameModes[1] = "HideAndSeek";
+		_gameModes[0] = GameMode.SURVIVAL;
+		_gameModes[1] = GameMode.HIDEANDSEEK;
 	}
 	/*
 	void OnGUI()
@@ -188,8 +187,6 @@ public class GameMenu : MonoBehaviour {
 		if(username.text != "")
 		{
 			_myUserInfo.username = username.text;
-			if(ipadress.text != "")
-				_connectionHandler.remoteIP = ipadress.text;
 
 			usernamePanel.SetActive(false);
 			mainmenuPanel.SetActive(true);
@@ -233,11 +230,19 @@ public class GameMenu : MonoBehaviour {
 	public void NextGameMode()
 	{
 		_gameModeCounter++;
+		if(_gameModeCounter > _gameModes.Length-1)
+		{
+			_gameModeCounter = 0;
+		}
 		gameModeText.text = _gameModes[_gameModeCounter];
 	}
 	public void BackGameMode()
 	{
 		_gameModeCounter--;
+		if(_gameModeCounter < 0)
+		{
+			_gameModeCounter = _gameModes.Length-1;
+		}
 		gameModeText.text = _gameModes[_gameModeCounter];
 	}
 }

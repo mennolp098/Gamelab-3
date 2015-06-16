@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public class ConnectionHandler : MonoBehaviour {
 	private const string _typeName = "Zombie Flick";
 
+	private string _gameMode = "";
 	private string _gameName = "Server Name";
 	public string remoteIP = "172.17.60.31";
 	private int _remotePort = 25000;
@@ -67,14 +68,15 @@ public class ConnectionHandler : MonoBehaviour {
 	private void SetGameMode(string gameMode)
 	{
 		GameObject gameController = GameObject.FindGameObjectWithTag(Tags.GameController);
-		if(gameMode == "Survival")
+		if(gameMode == GameMode.SURVIVAL)
 		{
 			gameController.AddComponent<ZombieGameMode>();
 		} 
-		else if(gameMode == "Hide And Seek")
+		else if(gameMode == GameMode.HIDEANDSEEK)
 		{
 			gameController.AddComponent<HideAndSeekGameMode>();
 		}
+		_gameMode = gameMode;
 	}
 
 	private void StartGame()
@@ -120,6 +122,12 @@ public class ConnectionHandler : MonoBehaviour {
 	void OnConnectedToServer()
 	{
 		JoinGameRoom();
+		_networkView.RPC("AskGameMode", RPCMode.Server, Network.player);
+	}
+	[RPC]
+	private void AskGameMode(NetworkPlayer asker)
+	{
+		_networkView.RPC("SetGameMode", asker, _gameMode);
 	}
 	void OnDisconnectedFromServer(NetworkDisconnection info) {
 		string information = "";

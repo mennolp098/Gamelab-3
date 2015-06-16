@@ -5,6 +5,8 @@ using System.Collections.Generic;
 public class GameMode : MonoBehaviour {
 	public const string TEAMONE = "Survivors";
 	public const string TEAMTWO = "Zombies";
+	public const string SURVIVAL = "Survival";
+	public const string HIDEANDSEEK = "Hide And Seek";
 
 	protected List<GameObject> _allPlayers = new List<GameObject>();
 	protected List<GameObject> _allZombies = new List<GameObject>();
