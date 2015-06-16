@@ -5,10 +5,11 @@ public class Health : MonoBehaviour {
 
 	public delegate void FloatInfoDelegate(float value);
 	public delegate void EmptyInfoDelegate ();
+	public delegate void GameObjectInfoDelegate (GameObject info);
 
 	public event FloatInfoDelegate HealthAddedEvent;
 	public event FloatInfoDelegate HealthLostEvent;
-	public event EmptyInfoDelegate NoHealthLeftEvent;
+	public event GameObjectInfoDelegate NoHealthLeftEvent;
 
 	private float _maxHealth;
 	private float _currentHealth;
@@ -54,7 +55,7 @@ public class Health : MonoBehaviour {
 			if (_currentHealth <= 0) {
 				_currentHealth = 0;
 				if(NoHealthLeftEvent != null){
-					NoHealthLeftEvent();
+					NoHealthLeftEvent(this.gameObject);
 				}
 			}
 		}

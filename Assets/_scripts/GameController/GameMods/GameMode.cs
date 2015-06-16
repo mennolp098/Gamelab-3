@@ -7,6 +7,8 @@ public class GameMode : MonoBehaviour {
 	public const string TEAMTWO = "Zombies";
 
 	protected List<GameObject> _allPlayers = new List<GameObject>();
+	protected List<GameObject> _allZombies = new List<GameObject>();
+	protected List<GameObject> _allSurvivors = new List<GameObject>();
 	protected NetworkView _networkView;
 	protected string _gameModeName;
 	protected bool _gameEnded = false;
@@ -22,7 +24,7 @@ public class GameMode : MonoBehaviour {
 	{
 	}
 	protected virtual void EndTimer () {
-		//TODO if timer hits end then give all survivers a gun.
+
 	}
 
 	[RPC]
@@ -48,5 +50,35 @@ public class GameMode : MonoBehaviour {
 			_allPlayers.Add(player);
 		}
 		_timer.GetComponent<Timer> ().StartTimer ();
+	}
+
+	protected virtual void BecameZombie(GameObject player)
+	{
+		_allSurvivors.Remove(player);
+		_allZombies.Add(player);
+	}
+	protected virtual void ZombiesWon()
+	{
+		string winners = "";
+		foreach(GameObject player in _allPlayers)
+		{
+			if(player.GetComponent<Zombie>())
+			{
+				winners += player.GetComponent<Player>().usernameText + " ";
+			}
+		}
+		_networkView.RPC("EndGame", RPCMode.All, _gameModeName, TEAMTWO, winners);
+	}
+	protected virtual void SurvivorsWon()
+	{
+		string winners = "";
+		foreach(GameObject player in _allPlayers)
+		{
+			if(player.GetComponent<Survivor>())
+			{
+				winners += player.GetComponent<Player>().usernameText + " ";
+			}
+		}
+		_networkView.RPC("EndGame", RPCMode.All, _gameModeName, TEAMONE, winners);
 	}
 }

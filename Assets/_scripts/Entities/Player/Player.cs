@@ -95,8 +95,13 @@ public class Player : MonoBehaviour {
 		newColor.a = 0;
 		_bloodScreen.color = newColor;
 	}
-	protected virtual void OnPlayerDeath(){
+	protected virtual void OnPlayerDeath(GameObject playerDied){
 		BroadcastMessage ("PlayAnimation", PlayerType.DEATH_ANIM);
+
+		//destroy all components that make a player
+		Destroy(GetComponent<Movement>());
+		Destroy(GetComponent<Rigidbody2D>());
+		Destroy(GetComponent<BoxCollider2D>());
 	}
 	
 	// Network functions
