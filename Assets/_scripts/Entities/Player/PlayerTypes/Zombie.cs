@@ -37,6 +37,7 @@ public class Zombie : PlayerType {
 	private void Attack()
 	{
 		BroadcastMessage("PlayAnimation", ATTACK_ANIM);
+		lockAnim ();
 	}
 	[RPC]
 	private void CreateCollision()

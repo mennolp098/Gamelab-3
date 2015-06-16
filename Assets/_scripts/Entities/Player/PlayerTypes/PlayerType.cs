@@ -54,7 +54,7 @@ public class PlayerType : MonoBehaviour {
 	private void PlayAnimation(string animation){
 		if (!_animationLocked && _animator.GetCurrentAnimatorStateInfo (0).IsName(ConvertAnimationName(animation)) == false) {
 			_networkView.RPC ("PlayAnimationNetwork", RPCMode.All, ConvertAnimationName(animation,true));
-			Debug.Log (ConvertAnimationName (animation));
+			//Debug.Log (ConvertAnimationName (animation));
 		}
 	}
 
@@ -79,6 +79,5 @@ public class PlayerType : MonoBehaviour {
 			animationToPlay = PlayerType.WALK_ANIM;
 		}
 		_animator.Play(animationToPlay);
-		Debug.Log (animationToPlay);
 	}
 }
