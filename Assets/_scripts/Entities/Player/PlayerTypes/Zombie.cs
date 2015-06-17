@@ -28,6 +28,7 @@ public class Zombie : PlayerType {
 		if(Input.GetMouseButton(0) && !_animator.GetCurrentAnimatorStateInfo(0).IsName(ATTACK_ANIM))
 		{
 			Attack ();
+			Debug.Log("Attack");
 		}
 		if(_animator.GetCurrentAnimatorStateInfo(0).IsName(ATTACK_ANIM))
 		{

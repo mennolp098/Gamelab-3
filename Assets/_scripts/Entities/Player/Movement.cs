@@ -41,7 +41,9 @@ public class Movement : MoveableNetworkEntity {
 		//Check running
 		if(Input.GetKey(KeyCode.LeftShift))
 		{
-			Run();
+			if(_rigidBody.velocity.magnitude > 0.5f){
+				Run();
+			}
 		} 
 		else if(Input.GetKeyUp(KeyCode.LeftShift))
 		{
