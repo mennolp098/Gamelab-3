@@ -16,6 +16,7 @@ public class Player : MonoBehaviour {
 	public float runSpeed;
 	public float condition;
 	public float maxStamina;
+	public float respawnTime = 3;
 
 	protected NetworkView _networkView;
 	protected Health _healhComponent;
@@ -98,10 +99,30 @@ public class Player : MonoBehaviour {
 	protected virtual void OnPlayerDeath(GameObject playerDied){
 		BroadcastMessage ("PlayAnimation", PlayerType.DEATH_ANIM);
 
+		_networkView.RPC("NetworkPlayerDeath", RPCMode.All);
+
+	}
+
+	[RPC]
+	private void NetworkPlayerDeath()
+	{
 		//destroy all components that make a player
 		Destroy(GetComponent<Movement>());
 		Destroy(GetComponent<Rigidbody2D>());
 		Destroy(GetComponent<BoxCollider2D>());
+
+		//respawn zombie if hideandseek
+		if(GameObject.FindGameObjectWithTag(Tags.GameController).GetComponent<HideAndSeekGameMode>() && GetComponent<Zombie>())
+		{
+			Invoke("Respawn", respawnTime);
+		}
+	}
+
+	private void Respawn()
+	{
+		gameObject.AddComponent<Movement>();
+		gameObject.AddComponent<Rigidbody2D>();
+		gameObject.AddComponent<BoxCollider2D>();
 	}
 	
 	// Network functions

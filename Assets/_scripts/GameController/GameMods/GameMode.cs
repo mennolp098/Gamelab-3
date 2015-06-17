@@ -11,16 +11,22 @@ public class GameMode : MonoBehaviour {
 	protected List<GameObject> _allPlayers = new List<GameObject>();
 	protected List<GameObject> _allZombies = new List<GameObject>();
 	protected List<GameObject> _allSurvivors = new List<GameObject>();
+	protected GameObject[] _gunSpawnPoints = new GameObject[4]; //Change length if there are more spawnpoints!!
 	protected NetworkView _networkView;
 	protected string _gameModeName;
 	protected bool _gameEnded = false;
 	protected GameObject _timer;
 
-	protected virtual void Awake () {
+	private GameController _gameController;
 
+	protected virtual void Awake () {
+		_gameController = GameObject.FindGameObjectWithTag(Tags.GameController).GetComponent<GameController>();
 	}
 	protected virtual void Start(){
 		_networkView = GetComponent<NetworkView>();
+		for (int i = 0; i < _gunSpawnPoints.Length; i++) {
+			_gunSpawnPoints[i] = GameObject.Find("GunSpawnPoint" + i);
+		}
 	}
 	protected virtual void Update()
 	{
@@ -34,11 +40,13 @@ public class GameMode : MonoBehaviour {
 	{
 		_timer.GetComponent<Timer> ().PauseTimer ();
 
+		_gameController.SetEndScreen(gameMode, teamwinner, winners);
+
 		Invoke ("ShowEndScreen", 3f);
 	}
 
 	private void ShowEndScreen(){
-		GameObject.FindGameObjectWithTag(Tags.GameController).GetComponent<GameController>().ShowEndscreen();
+		_gameController.ShowEndscreen();
 	}
 
 	public virtual void StartGameMode(){
@@ -50,6 +58,8 @@ public class GameMode : MonoBehaviour {
 		foreach(GameObject player in players)
 		{
 			_allPlayers.Add(player);
+			_allSurvivors.Add(player);
+			player.GetComponent<Survivor>().SurvivorBecameZombieEvent += BecameZombie;
 		}
 		_timer.GetComponent<Timer> ().StartTimer ();
 	}
@@ -58,6 +68,16 @@ public class GameMode : MonoBehaviour {
 	{
 		_allSurvivors.Remove(player);
 		_allZombies.Add(player);
+
+		if(Network.isServer)
+			CheckZombieWin();
+	}
+	protected virtual void CheckZombieWin()
+	{
+		if(_allSurvivors.Count == 0)
+		{
+			ZombiesWon();
+		}
 	}
 	protected virtual void ZombiesWon()
 	{

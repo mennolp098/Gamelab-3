@@ -2,16 +2,10 @@
 using System.Collections;
 
 public class ZombieGameMode : GameMode {
-	private GameObject[] gunSpawnPoints = new GameObject[4]; //Change length if there are more spawnpoints!!
-	private GameObject gunPrefab;
 	protected override void Start()
 	{
 		base.Start();
 		_gameModeName = "Survival";
-		gunPrefab = Resources.Load("Prefabs/gunPrefab", typeof(GameObject)) as GameObject;
-		for (int i = 0; i < gunSpawnPoints.Length; i++) {
-			gunSpawnPoints[i] = GameObject.Find("GunSpawnPoint" + i);
-		}
 	}
 
 	public override void StartGameMode ()
@@ -29,14 +23,11 @@ public class ZombieGameMode : GameMode {
 	protected override void EndTimer ()
 	{
 		base.EndTimer ();
-		if(Network.isServer)
-			SpawnGuns();
-	}
-	private void SpawnGuns()
-	{
-		for (int i = 0; i < gunSpawnPoints.Length; i++) 
+
+		//every client and the server will give the survivor a pistol component
+		foreach (GameObject survivor in _allSurvivors) 
 		{
-			Network.Instantiate(gunPrefab,gunSpawnPoints[i].transform.position,Quaternion.identity, 1);
+			survivor.AddComponent<Pistol>();
 		}
 	}
 	private void CheckPlayers (GameObject playerDied)
