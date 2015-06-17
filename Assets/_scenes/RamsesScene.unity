@@ -536,6 +536,10 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11484234, guid: 123b4e0eb4ec64647a19454f1f0ea489, type: 2}
+      propertyPath: m_Text
+      value: 'Winners: '
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 123b4e0eb4ec64647a19454f1f0ea489, type: 2}
   m_IsPrefabParent: 0

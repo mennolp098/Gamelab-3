@@ -74,12 +74,27 @@ public class Survivor : PlayerType {
 			gameObject.AddComponent<Pistol>();
 		}
 	}
+	[RPC]
+	private void PickupGoldenGun()
+	{
+		if(GetComponent<GoldenGun>() == null)
+		{
+			gameObject.AddComponent<GoldenGun>();
+		}
+	}
+
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		if(other.transform.tag == Tags.Gun)
 		{
 			_networkView.RPC("PickupGun", RPCMode.All);
+			if(Network.isServer)
+				Network.Destroy(other.gameObject);
+		}
+		else if(other.transform.tag == Tags.GoldenGun)
+		{
+			_networkView.RPC("PickupGoldenGun", RPCMode.All);
 			if(Network.isServer)
 				Network.Destroy(other.gameObject);
 		}

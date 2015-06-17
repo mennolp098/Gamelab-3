@@ -5,7 +5,7 @@ using System.Collections;
 public class Gun : MonoBehaviour, IWeapon {
 	private GameObject _muzzleFlare;
 
-	private NetworkView _networkView;
+	protected NetworkView _networkView;
 	private float _ammo;
 	private float _maxAmmo;
 	private float _reloadTime;
@@ -69,6 +69,12 @@ public class Gun : MonoBehaviour, IWeapon {
 			}
 		}
 	}
+	[RPC]
+	protected void DestroyThis()
+	{
+		Destroy(this);
+	}
+
 	public virtual void Reload()
 	{
 		if(!_isReloading)
