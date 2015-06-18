@@ -5,12 +5,30 @@ using UnityEngine.UI;
 public class EndScreenClass : MonoBehaviour {
 
 	public Text winnerText;
+	public Sprite humansWinGraph;
+	public Sprite zombiesWinGraph;
+
 
 	public void ChangeText(string winningTeam, string winningPlayerUserN = ""){
-		winnerText.text = "Winning Team: " + winningTeam + "\n";
-		if (winningPlayerUserN != "") {
-			winnerText.text += " Winning players: " + winningPlayerUserN;
+
+		if(winningTeam == GameMode.TEAMONE)
+		{
+			SetBackground(humansWinGraph);
+			winnerText.text = "Winning Team: " + winningTeam + "\n";
+			if (winningPlayerUserN != "") 
+			{
+				winnerText.text += " Winning players: " + winningPlayerUserN;
+			}
+		} 
+		else if(winningTeam == GameMode.TEAMTWO)
+		{
+			SetBackground(zombiesWinGraph);
+			winnerText.text = "";
 		}
+	}
+	private void SetBackground(Sprite background)
+	{
+		GetComponent<Image>().sprite = background;
 	}
 	void Update()
 	{

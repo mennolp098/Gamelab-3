@@ -43,9 +43,9 @@ public class GameMenu : MonoBehaviour {
 		GameObject connector = GameObject.FindGameObjectWithTag(Tags.Connector);
 		_myUserInfo = connector.GetComponent<UserInfo>();
 		_connectionHandler = connector.GetComponent<ConnectionHandler>();
-
-		_gameModes[0] = GameMode.SURVIVAL;
-		_gameModes[1] = GameMode.HIDEANDSEEK;
+		
+		_gameModes[0] = GameMode.HIDEANDSEEK;
+		_gameModes[1] = GameMode.SURVIVAL;
 
 		graphDictionary.Add(0,gameModeGraphOne);
 		graphDictionary.Add(1,gameModeGraphTwo);

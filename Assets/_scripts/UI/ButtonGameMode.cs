@@ -12,4 +12,8 @@ public class ButtonGameMode : MonoBehaviour {
 	{
 		gameMenu.HoverOutGameMode(id);
 	}
+	void OnMouseDown()
+	{
+		gameMenu.ChooseGameMode(id);
+	}
 }
