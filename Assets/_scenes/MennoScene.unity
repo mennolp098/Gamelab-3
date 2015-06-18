@@ -616,6 +616,7 @@ MonoBehaviour:
   runSpeed: 0
   condition: 0
   maxStamina: 0
+  respawnTime: 3
 --- !u!212 &1077952073
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -745,6 +746,10 @@ Prefab:
     - target: {fileID: 22447200, guid: ccfcb9183b8ca4b4794612751e5d6e6b, type: 2}
       propertyPath: m_AnchorMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 196612, guid: ccfcb9183b8ca4b4794612751e5d6e6b, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ccfcb9183b8ca4b4794612751e5d6e6b, type: 2}
@@ -914,7 +919,7 @@ NetworkView:
   m_StateSynchronization: 1
   m_Observed: {fileID: 2079894511}
   m_ViewID:
-    m_ID: 1
+    m_ID: 3
     m_Type: 1
 --- !u!1 &2094918450
 GameObject:

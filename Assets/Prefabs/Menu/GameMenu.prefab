@@ -1787,7 +1787,6 @@ MonoBehaviour:
   serverButton: {fileID: 113580, guid: ca2a74aa64250474e9fe927c69d04402, type: 2}
   username: {fileID: 11400396}
   servername: {fileID: 11402432}
-  ipadress: {fileID: 0}
   maxPlayersText: {fileID: 11478360}
   gameModeText: {fileID: 11487940}
   playerSlider: {fileID: 11419042}
