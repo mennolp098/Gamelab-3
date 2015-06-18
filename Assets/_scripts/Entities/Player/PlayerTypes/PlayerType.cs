@@ -34,7 +34,11 @@ public class PlayerType : MonoBehaviour {
 	protected virtual void ChangePlayerStats () {
 		if(_networkView.isMine)
 		{
+			if(_currentStatus == "Survivor"){
 			_uiStatus.text = _currentStatus;
+			}else if(_currentStatus == "Zombie"){
+
+			}
 		}
 		SendMessage ("PlayerStatsChanged");
 	}
