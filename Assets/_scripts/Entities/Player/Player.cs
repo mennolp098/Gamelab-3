@@ -156,4 +156,18 @@ public class Player : MonoBehaviour {
 		}
 		usernameDisplayText.color = newColor;
 	}
+	private void OnTriggerEnter2D(Collider2D other)
+	{
+		if(other.transform.tag == Tags.GrayRoom && _networkView.isMine)
+		{
+			other.GetComponent<FadeInOut>().Fade(0, 0.05f);
+		}
+	}
+	private void OnTriggerExit2D(Collider2D other)
+	{
+		if(other.transform.tag == Tags.GrayRoom & _networkView.isMine)
+		{
+			other.GetComponent<FadeInOut>().Fade(1, 0.05f);
+		}
+	}
 }

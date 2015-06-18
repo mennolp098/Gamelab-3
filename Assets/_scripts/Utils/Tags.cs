@@ -10,4 +10,5 @@ public class Tags : MonoBehaviour {
 	public const string Menu = "GameMenu";
 	public const string Gun = "Gun";
 	public const string GoldenGun = "GoldenGun";
+	public const string GrayRoom = "GrayRoom";
 }

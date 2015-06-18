@@ -8,6 +8,7 @@ TagManager:
   - GameMenu
   - Gun
   - GoldenGun
+  - GrayRoom
   layers:
   - Default
   - TransparentFX

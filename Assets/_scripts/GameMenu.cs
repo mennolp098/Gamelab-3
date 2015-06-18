@@ -42,6 +42,30 @@ public class GameMenu : MonoBehaviour {
 		_gameModes[0] = GameMode.SURVIVAL;
 		_gameModes[1] = GameMode.HIDEANDSEEK;
 	}
+	void Update()
+	{
+		if(Input.GetKeyDown(KeyCode.Escape))
+		{
+			if(Network.isServer || Network.isClient)
+			{
+				Network.Disconnect();
+			} else {
+				BackToUsernamePanel();
+			}
+		}
+	}
+	void BackToUsernamePanel()
+	{
+		serverlistPanel.SetActive(false);
+		mainmenuPanel.SetActive(false);
+		newServerPanel.SetActive(false);
+		gameRoomPanel.SetActive(false);
+		usernamePanel.SetActive(true);
+	}
+	public void QuitGame()
+	{
+		Application.Quit();
+	}
 	/*
 	void OnGUI()
 	{

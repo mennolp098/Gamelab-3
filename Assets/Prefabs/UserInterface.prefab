@@ -116,7 +116,7 @@ GameObject:
   - 222: {fileID: 22270426}
   - 114: {fileID: 11471348}
   m_Layer: 5
-  m_Name: Red Screen
+  m_Name: BloodScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &179882
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,7 +408,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Winners and shizz
+  m_Text: 'Winners: '
 --- !u!114 &11489296
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -526,7 +526,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
 --- !u!224 &22408494
 RectTransform:
   m_ObjectHideFlags: 1
