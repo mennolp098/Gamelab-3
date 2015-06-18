@@ -108,6 +108,10 @@ public class Player : MonoBehaviour {
 	{
 		//destroy all components that make a player
 		Destroy(GetComponent<Movement>());
+		Vector3 newPos = this.transform.position;
+		newPos.z = -0.1f;
+		this.transform.position = newPos;
+		Destroy(GetComponent<CameraToAim>());
 		Destroy(GetComponent<Rigidbody2D>());
 		Destroy(GetComponent<BoxCollider2D>());
 
@@ -120,7 +124,11 @@ public class Player : MonoBehaviour {
 
 	private void Respawn()
 	{
+		Vector3 newPos = this.transform.position;
+		newPos.z = 0f;
+		this.transform.position = newPos;
 		gameObject.AddComponent<Movement>();
+		gameObject.AddComponent<CameraToAim>();
 		gameObject.AddComponent<Rigidbody2D>();
 		gameObject.AddComponent<BoxCollider2D>();
 	}

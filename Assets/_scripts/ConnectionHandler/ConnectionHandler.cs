@@ -16,6 +16,7 @@ public class ConnectionHandler : MonoBehaviour {
 	private GameMenu _gameMenu;
 	private UserInfo _myUserInfo;
 
+	public GameObject level;
 
 	public string ip = "";
 	public HostData[] hostList;
@@ -60,6 +61,7 @@ public class ConnectionHandler : MonoBehaviour {
 	private void SpawnAllPlayers()
 	{
 		_gameMenu.gameObject.SetActive(false);
+		level.SetActive(true);
 		userInterface.SetActive(true);
 		SpawnPlayer();
 		Invoke ("StartGame", 3f);

@@ -21,6 +21,7 @@ public class GameMenu : MonoBehaviour {
 	public GameObject gameRoomPanel;
 
 	public GameObject startButton;
+
 	//public GameObject ipDisplay;
 
 	public Image gameModeGraphOne;
