@@ -5,9 +5,9 @@ public class CameraToAim : MonoBehaviour {
 	private NetworkView _networkView;
 
 	private GameObject _camera;
-	private float _lookSpeed = 1.2f;
+	private float _lookSpeed = 1f;
 	//private float _minDistanceToActivate = 1f;
-	private float _maxLookDistance = 2f;
+	private float _maxLookDistance = 2.4f;
 	private Vector3 _focusPoint;
 
 	void Awake(){
