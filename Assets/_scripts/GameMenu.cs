@@ -9,15 +9,22 @@ public class GameMenu : MonoBehaviour {
 	private string[] _gameModes = new string[2];
 	private int _gameModeCounter = 0;
 	//private GameObject[] allRooms = new GameObject[10];
+	private Dictionary<int,Image> graphDictionary = new Dictionary<int, Image>();
+
 
 	public GameObject usernamePanel;
 	public GameObject serverlistPanel;
 	public GameObject mainmenuPanel;
 	public GameObject newServerPanel;
+	public GameObject gameModePanel;
+	public GameObject creditsPanel;
 	public GameObject gameRoomPanel;
 
 	public GameObject startButton;
 	//public GameObject ipDisplay;
+
+	public Image gameModeGraphOne;
+	public Image gameModeGraphTwo;
 
 	public bool inGameRoom;
 	public List<string> allUsernames = new List<string>();
@@ -27,8 +34,6 @@ public class GameMenu : MonoBehaviour {
 	public GameObject serverButton;
 	public Text username;
 	public Text servername;
-	public Text maxPlayersText;
-	public Text gameModeText;
 	public Slider playerSlider;
 	//public GUIStyle buttonStyle;
 	//public GUIStyle textStyle;
@@ -41,6 +46,9 @@ public class GameMenu : MonoBehaviour {
 
 		_gameModes[0] = GameMode.SURVIVAL;
 		_gameModes[1] = GameMode.HIDEANDSEEK;
+
+		graphDictionary.Add(0,gameModeGraphOne);
+		graphDictionary.Add(1,gameModeGraphTwo);
 	}
 	void Update()
 	{
@@ -54,12 +62,13 @@ public class GameMenu : MonoBehaviour {
 			}
 		}
 	}
-	void BackToUsernamePanel()
+	public void BackToUsernamePanel()
 	{
 		serverlistPanel.SetActive(false);
 		mainmenuPanel.SetActive(false);
 		newServerPanel.SetActive(false);
 		gameRoomPanel.SetActive(false);
+		creditsPanel.SetActive(false);
 		usernamePanel.SetActive(true);
 	}
 	public void QuitGame()
@@ -202,10 +211,6 @@ public class GameMenu : MonoBehaviour {
 			newServerPanel.SetActive(false);
 		}
 	}
-	public void OnPlayerSliderChange()
-	{
-		maxPlayersText.text = "Max players: " + playerSlider.value;
-	}
 	public void UsernameButtonClicked()
 	{
 		if(username.text != "")
@@ -221,7 +226,7 @@ public class GameMenu : MonoBehaviour {
 	public void ServerButtonClicked()
 	{
 		mainmenuPanel.SetActive(false);
-		newServerPanel.SetActive(true);
+		gameModePanel.SetActive(true);
 	}
 	public void ServerlistButtonClicked()
 	{
@@ -249,24 +254,24 @@ public class GameMenu : MonoBehaviour {
 	}
 	public void CreditsButtonClicked()
 	{
-		//TODO: credits panel
+		usernamePanel.SetActive(false);
+		creditsPanel.SetActive(true);
 	}
-	public void NextGameMode()
+	public void HoverGameMode(int gameModeId)
 	{
-		_gameModeCounter++;
-		if(_gameModeCounter > _gameModes.Length-1)
-		{
-			_gameModeCounter = 0;
-		}
-		gameModeText.text = _gameModes[_gameModeCounter];
+		Color newColor = Color.yellow;
+		newColor.b = 0.5f;
+		graphDictionary[gameModeId].color = newColor;
 	}
-	public void BackGameMode()
+	public void HoverOutGameMode(int gameModeId)
 	{
-		_gameModeCounter--;
-		if(_gameModeCounter < 0)
-		{
-			_gameModeCounter = _gameModes.Length-1;
-		}
-		gameModeText.text = _gameModes[_gameModeCounter];
+		Color newColor = Color.white;
+		graphDictionary[gameModeId].color = newColor;
+	}
+	public void ChooseGameMode(int gameModeId)
+	{
+		_gameModeCounter = gameModeId;
+		gameModePanel.SetActive(false);
+		newServerPanel.SetActive(true);
 	}
 }
