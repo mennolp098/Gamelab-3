@@ -43,12 +43,21 @@ public class Gun : MonoBehaviour, IWeapon {
 				Shoot();
 			}
 			_currentShootCooldown = Time.time + _shootCooldown;
+			_networkView.RPC("PlayGunSound",RPCMode.All);
 		} 
 		else 
 		{
 			Reload();
 		}
 	}
+	[RPC]
+	private void PlayGunSound()
+	{
+		AudioSource myAudio = GetComponent<AudioSource>();
+		myAudio.clip = GameObject.FindGameObjectWithTag(Tags.GameController).GetComponent<AudioList>().PlayAudio("gun shoot");
+		myAudio.Play();
+	}
+
 	[RPC]
 	public virtual void Shoot()
 	{

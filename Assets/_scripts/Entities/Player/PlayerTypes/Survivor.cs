@@ -53,6 +53,17 @@ public class Survivor : PlayerType {
 	{
 		if(_networkView.isMine)
 		{
+			float[] shakeParameters = new float[3];
+			float shakeAmount = 2;
+			float shakeIntensity = 0.5f;
+			float shakeSpeed = 0.1f;
+			
+			shakeParameters[0] = shakeAmount;
+			shakeParameters[1] = shakeIntensity;
+			shakeParameters[2] = shakeSpeed;
+			
+			SendMessage("Shake", shakeParameters);
+
 			_networkView.RPC ("NetworkBecomeZombie", RPCMode.All);
 		}
 	}
