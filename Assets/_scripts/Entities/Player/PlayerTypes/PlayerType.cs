@@ -12,7 +12,7 @@ public class PlayerType : MonoBehaviour {
 	public const string HIT_ANIM = "Hit";
 
 	protected string _currentStatus = "Survivor";
-	protected Text _uiStatus;
+	protected Image _uiStatus;
 	
 	protected Player _player;
 	protected Animator _animator;
@@ -25,8 +25,8 @@ public class PlayerType : MonoBehaviour {
 		_player = GetComponent<Player> ();
 		_animator = GetComponent<Animator> ();
 		_networkView = GetComponent<NetworkView> ();
-		if (GameObject.Find ("StatusText") != null) {
-			_uiStatus = GameObject.Find ("StatusText").GetComponent<Text> ();
+		if (GameObject.Find ("Status") != null) {
+			_uiStatus = GameObject.Find ("Status").GetComponent<Image>();
 		}
 		ChangePlayerStats ();
 	}
@@ -35,10 +35,12 @@ public class PlayerType : MonoBehaviour {
 		if(_networkView.isMine)
 		{
 			if(_currentStatus == "Survivor"){
-			_uiStatus.text = _currentStatus;
+				_uiStatus.sprite = Resources.Load<Sprite>("Art/UI/survivorIcon");
+				Debug.Log("gfhg");
 			}else if(_currentStatus == "Zombie"){
-
+				_uiStatus.sprite = Resources.Load<Sprite>("Art/UI/zombieIcon");
 			}
+			_uiStatus.GetComponentInChildren<Text>().text = _currentStatus;
 		}
 		SendMessage ("PlayerStatsChanged");
 	}
