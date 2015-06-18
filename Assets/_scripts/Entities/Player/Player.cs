@@ -160,14 +160,14 @@ public class Player : MonoBehaviour {
 	{
 		if(other.transform.tag == Tags.GrayRoom && _networkView.isMine)
 		{
-			other.GetComponent<FadeInOut>().Fade(0, 0.05f);
+			other.GetComponent<FadeInOut>().Fade(0, 0.02f);
 		}
 	}
 	private void OnTriggerExit2D(Collider2D other)
 	{
 		if(other.transform.tag == Tags.GrayRoom & _networkView.isMine)
 		{
-			other.GetComponent<FadeInOut>().Fade(1, 0.05f);
+			other.GetComponent<FadeInOut>().Fade(1, 0.02f);
 		}
 	}
 }
